@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Department of Computer Science — Stellenbosch University. Academic programmes, research groups, staff, publications and more.">
+  <meta property="og:title" content="CS Department — Stellenbosch University">
+  <meta property="og:description" content="Africa's leading CS department. Research, teaching, innovation.">
+  <title>Computer Science — Stellenbosch University</title>
+  <meta name="theme-color" content="#0e0508">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2361223b'/><text y='24' x='4' font-size='24' fill='%23caa258'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.2/confetti.browser.min.js"></script>
+</head>
+<body style="margin:0;padding:0;background:#0e0508;font-family:Raleway,Trebuchet MS,sans-serif;-webkit-font-smoothing:antialiased;">
+<style>
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #0e0508;
+}
+/* ═══════════════════════════════════════════════════════════
+   MATIS-OS — CS DEPT — Cloudflare Pages
+   SU Brand Manual v3 (Sept 2025) compliant
+   ═══════════════════════════════════════════════════════════ */
+
+/* Cloudflare Pages — no Drupal escape needed */
+* { box-sizing: border-box; }
+
+/* ── GOOGLE FONTS ── */
+/* ══════════════════════════════════════════════════
+   SU BRAND COLOURS (Brand Manual v3, Sept 2025)
+   Primary:   Confident Maroon #61223b  |  70% ratio
+              Brilliant Gold   #caa258  |  20% ratio
+   Secondary: Seabreeze Green  #82CCAE  |  10% ratio
+              Fiery Orange     #dc4405
+              Wine Red         #A60A3D
+              Soil             #643335
+   Text:      Steel Grey       #4d5356
+              Near-black       #2C2A29
+   ══════════════════════════════════════════════════ */
+
+#matis-root {
+  /* ── Official SU palette ── */
+  --su-maroon:   #61223b;
+  --su-maroon-d: #420f27;
+  --su-maroon-l: #7a2d4a;
+  --su-gold:     #caa258;
+  --su-gold-d:   #a07a30;
+  --su-gold-l:   #dfc07e;
+  --su-green:    #82CCAE;
+  --su-orange:   #dc4405;
+  --su-wine:     #A60A3D;
+  --su-soil:     #643335;
+  --su-grey:     #4d5356;
+  --su-dark:     #2C2A29;
+  --su-white:    #ffffff;
+  --su-offwhite: #faf7f2;
+  --su-cream:    #f5ede0;
+
+  /* ── Terminal palette (dark bg) ── */
+  --term-bg:     #0e0508;
+  --term-bg2:    #180b10;
+  --term-gold:   #caa258;
+  --term-green:  #82CCAE;
+  --term-red:    #dc4405;
+  --term-cyan:   #64c8d4;
+  --term-dim:    rgba(202,162,88,0.45);
+  --glow:        0 0 10px rgba(202,162,88,0.5);
+  --glow-strong: 0 0 24px rgba(202,162,88,0.7), 0 0 48px rgba(97,34,59,0.4);
+
+  /* ── Page view palette (light) ── */
+  --page-bg:       #faf7f2;
+  --page-bg2:      #f0e8de;
+  --page-text:     #2C2A29;
+  --page-text2:    #4d5356;
+  --page-card:     #ffffff;
+  --page-border:   rgba(97,34,59,0.12);
+  --page-maroon:   #61223b;
+  --page-gold:     #a07a30;
+
+  font-family: 'Raleway', 'Trebuchet MS', sans-serif;
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 500px;
+  overflow: hidden;
+  background: var(--term-bg);
+  color: var(--term-gold);
+}
+
+/* ── LIGHT MODE OVERRIDES ── */
+#matis-root.light-mode {
+  --term-bg:    #f0e8de;
+  --term-bg2:   #e0d0c0;
+  --term-gold:  #7a4a08;
+  --term-green: #1a6040;
+  --term-red:   #a01800;
+  --term-cyan:  #0a5068;
+  --term-dim:   rgba(97,34,59,0.45);
+  --page-bg:    #ffffff;
+  --page-bg2:   #f5ede0;
+  --page-card:  #faf7f2;
+  --page-border: rgba(97,34,59,0.10);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   DARK MODE — CRT TERMINAL PAGE VIEW
+   All page-view elements stay true to the phosphor/amber terminal
+   aesthetic when not in light-mode. No cream/white anywhere.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Dark page root variables (defaults — no .light-mode class) ── */
+#matis-root:not(.light-mode) {
+  --page-bg:      #0e0508;
+  --page-bg2:     #130b0e;
+  --page-card:    #1a0d12;
+  --page-border:  rgba(202,162,88,0.14);
+  --page-text:    #d4aa72;
+  --page-text2:   rgba(202,162,88,0.68);
+  --page-maroon:  #caa258;
+  --page-gold:    #caa258;
+}
+
+/* ── Content area bg ── */
+#matis-root:not(.light-mode) #m-content {
+  background: #0e0508;
+  scrollbar-color: rgba(202,162,88,0.3) transparent;
+}
+
+/* CRT phosphor scanlines overlay on the page content area */
+#matis-root:not(.light-mode) #m-content::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.13) 2px,
+    rgba(0,0,0,0.13) 4px
+  );
+}
+
+/* ── Page headings ── */
+#matis-root:not(.light-mode) .m-h1 {
+  color: var(--su-gold);
+  text-shadow: 0 0 18px rgba(202,162,88,0.35);
+}
+#matis-root:not(.light-mode) .m-h1::after {
+  background: linear-gradient(90deg, var(--su-gold), rgba(202,162,88,0.15), transparent);
+}
+#matis-root:not(.light-mode) .m-h2 {
+  color: var(--su-gold-l);
+  text-shadow: 0 0 10px rgba(202,162,88,0.2);
+}
+#matis-root:not(.light-mode) .m-h2::after {
+  background: linear-gradient(90deg, rgba(202,162,88,0.2), transparent);
+}
+#matis-root:not(.light-mode) .m-h3 { color: var(--su-gold); }
+
+/* ── Body text ── */
+#matis-root:not(.light-mode) .m-p {
+  color: rgba(202,162,88,0.72);
+}
+#matis-root:not(.light-mode) .m-link {
+  color: var(--su-gold);
+  border-bottom-color: rgba(202,162,88,0.35);
+}
+#matis-root:not(.light-mode) .m-link:hover {
+  color: var(--su-white);
+  border-color: var(--su-gold);
+}
+
+/* ── Cards ── */
+#matis-root:not(.light-mode) .m-card {
+  background: #160a0f;
+  border-left-color: var(--su-maroon);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 0 0 1px rgba(202,162,88,0.06), inset 0 0 30px rgba(97,34,59,0.04);
+}
+#matis-root:not(.light-mode) .m-card:hover {
+  border-left-color: var(--su-gold-d);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.6), 0 0 18px rgba(97,34,59,0.2), 0 0 0 1px rgba(202,162,88,0.12);
+  background: #1c0d14;
+}
+#matis-root:not(.light-mode) .m-card h3 { color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-card p  { color: rgba(202,162,88,0.65); }
+#matis-root:not(.light-mode) .m-card .meta {
+  color: rgba(202,162,88,0.45);
+  border-top-color: rgba(202,162,88,0.1);
+}
+
+/* ── Stat blocks ── */
+#matis-root:not(.light-mode) .m-stat {
+  background: linear-gradient(155deg, #1f0e17 0%, #130a0e 100%);
+  border: 1px solid rgba(202,162,88,0.12);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.55), inset 0 0 20px rgba(97,34,59,0.1);
+}
+#matis-root:not(.light-mode) .m-stat .num {
+  color: var(--su-gold);
+  text-shadow: 0 0 20px rgba(202,162,88,0.55);
+}
+#matis-root:not(.light-mode) .m-stat .lbl { color: rgba(202,162,88,0.5); }
+
+/* ── Info boxes ── */
+#matis-root:not(.light-mode) .m-infobox {
+  background: #130b0e;
+  border-color: rgba(202,162,88,0.1);
+  border-left-color: var(--su-gold-d);
+  color: rgba(202,162,88,0.75);
+}
+#matis-root:not(.light-mode) .m-infobox.success { background: rgba(26,96,64,0.08); border-left-color: var(--su-green); }
+#matis-root:not(.light-mode) .m-infobox.alert   { background: rgba(220,68,5,0.06); border-left-color: var(--su-orange); }
+
+/* ── Tables ── */
+#matis-root:not(.light-mode) table.m-table th {
+  background: #420f27;
+  color: var(--su-gold);
+  letter-spacing: 1.5px;
+}
+#matis-root:not(.light-mode) table.m-table td {
+  color: rgba(202,162,88,0.7);
+  border-bottom-color: rgba(202,162,88,0.08);
+}
+#matis-root:not(.light-mode) table.m-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+#matis-root:not(.light-mode) table.m-table tr:hover td { background: rgba(202,162,88,0.05); }
+#matis-root:not(.light-mode) .trend-up { color: var(--su-green); text-shadow: 0 0 8px rgba(130,204,174,0.4); }
+
+/* ── Profile cards ── */
+#matis-root:not(.light-mode) .m-profile {
+  background: #160a0f;
+  border-top-color: var(--su-maroon);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+#matis-root:not(.light-mode) .m-profile:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.6), 0 0 24px rgba(97,34,59,0.2);
+}
+#matis-root:not(.light-mode) .m-profile h3 { color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-profile .role { color: rgba(202,162,88,0.5); }
+#matis-root:not(.light-mode) .m-profile p,
+#matis-root:not(.light-mode) .m-profile div:not(.m-avatar):not(.role) { color: rgba(202,162,88,0.55); }
+
+/* ── Events ── */
+#matis-root:not(.light-mode) .m-event {
+  background: #160a0f;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+}
+#matis-root:not(.light-mode) .m-event:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.55), 0 0 18px rgba(97,34,59,0.15);
+}
+#matis-root:not(.light-mode) .m-edate { background: linear-gradient(180deg, #420f27, #1f0e17); }
+#matis-root:not(.light-mode) .m-ebody { border-left-color: rgba(202,162,88,0.15); }
+#matis-root:not(.light-mode) .m-ebody h4 { color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-ebody p  { color: rgba(202,162,88,0.6); }
+#matis-root:not(.light-mode) .m-ebody .emeta { color: rgba(202,162,88,0.45); }
+#matis-root:not(.light-mode) .m-rsvp-btn {
+  border-color: rgba(202,162,88,0.2);
+  color: var(--su-gold-d);
+}
+#matis-root:not(.light-mode) .m-rsvp-btn:hover { background: var(--su-maroon); color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-rsvp-btn.rsvpd { background: #0d3022; color: var(--su-green); border-color: rgba(130,204,174,0.3); }
+
+/* ── Publications ── */
+#matis-root:not(.light-mode) .m-pub {
+  background: #160a0f;
+  border-left-color: rgba(202,162,88,0.4);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+#matis-root:not(.light-mode) .m-pub:hover {
+  border-left-color: var(--su-gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 12px rgba(202,162,88,0.08);
+  background: #1c0d14;
+}
+#matis-root:not(.light-mode) .m-pub h4  { color: rgba(202,162,88,0.88); }
+#matis-root:not(.light-mode) .m-pub .authors { color: rgba(202,162,88,0.55); }
+#matis-root:not(.light-mode) .m-pub .venue   { color: rgba(202,162,88,0.4); }
+#matis-root:not(.light-mode) .m-pub a  { color: var(--su-gold); border-bottom-color: rgba(202,162,88,0.25); }
+#matis-root:not(.light-mode) .m-pub a:hover { color: var(--su-white); }
+
+/* ── Accordion (FAQ / modules) ── */
+#matis-root:not(.light-mode) .m-acc-item { border-bottom-color: rgba(202,162,88,0.1); }
+#matis-root:not(.light-mode) .m-acc-btn  { color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-acc-btn:hover { color: var(--su-gold-l); }
+#matis-root:not(.light-mode) .m-acc-arrow { color: rgba(202,162,88,0.5); }
+#matis-root:not(.light-mode) .m-acc-inner { color: rgba(202,162,88,0.65); }
+
+/* ── Module rows ── */
+#matis-root:not(.light-mode) .m-mod-row {
+  border-bottom-color: rgba(202,162,88,0.08);
+  color: rgba(202,162,88,0.72);
+}
+#matis-root:not(.light-mode) .m-mod-row:nth-child(even) { background: rgba(255,255,255,0.015); }
+#matis-root:not(.light-mode) .m-mod-row:hover { background: rgba(202,162,88,0.05); }
+#matis-root:not(.light-mode) .m-mod-row .code  { color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-mod-row .sem   { color: rgba(202,162,88,0.38); }
+#matis-root:not(.light-mode) .m-mod-row .cred  { color: var(--su-gold-d); }
+
+/* ── Programme / curriculum rows ── */
+#matis-root:not(.light-mode) .curr-hdr {
+  background: #130b0e;
+  color: var(--su-gold);
+  border-left-color: var(--su-maroon);
+}
+#matis-root:not(.light-mode) .curr-hdr:hover { background: #1a0d13; }
+#matis-root:not(.light-mode) .curr-body { background: #0f090c; }
+#matis-root:not(.light-mode) .curr-row {
+  border-bottom-color: rgba(202,162,88,0.07);
+  color: rgba(202,162,88,0.72);
+}
+#matis-root:not(.light-mode) .curr-row:nth-child(even) { background: rgba(255,255,255,0.015); }
+#matis-root:not(.light-mode) .curr-row:hover { background: rgba(202,162,88,0.05); }
+#matis-root:not(.light-mode) .curr-code { color: var(--su-gold); }
+#matis-root:not(.light-mode) .curr-sem  { color: rgba(202,162,88,0.38); }
+#matis-root:not(.light-mode) .curr-cr   { color: var(--su-gold-d); }
+#matis-root:not(.light-mode) .curr-yr-hdr { color: rgba(202,162,88,0.45); }
+
+/* ── Programme info boxes ── */
+#matis-root:not(.light-mode) .prog-info-grid .prog-info-box {
+  background: #130b0e;
+  border-top-color: var(--su-maroon);
+}
+#matis-root:not(.light-mode) .prog-info-box.gold   { border-top-color: var(--su-gold-d); }
+#matis-root:not(.light-mode) .prog-info-box.green  { border-top-color: var(--su-green); }
+#matis-root:not(.light-mode) .prog-info-box.blue   { border-top-color: #3a6ab4; }
+#matis-root:not(.light-mode) .prog-info-box.orange { border-top-color: var(--su-orange); }
+#matis-root:not(.light-mode) .prog-info-hdr { color: rgba(202,162,88,0.5); }
+#matis-root:not(.light-mode) .prog-info-body { color: rgba(202,162,88,0.7); }
+
+/* ── Curr section wrapper ── */
+#matis-root:not(.light-mode) .curr-section {
+  border-color: rgba(202,162,88,0.1);
+}
+
+/* ── Progress bars ── */
+#matis-root:not(.light-mode) .m-prog-bar  { background: rgba(202,162,88,0.08); }
+#matis-root:not(.light-mode) .m-prog-fill { background: linear-gradient(90deg, var(--su-maroon), var(--su-gold-d)); }
+
+/* ── Sliders ── */
+#matis-root:not(.light-mode) .m-slider-label { color: rgba(202,162,88,0.5); }
+#matis-root:not(.light-mode) .m-slider-val   { color: var(--su-gold); }
+#matis-root:not(.light-mode) input[type=range] { background: rgba(202,162,88,0.1); }
+
+/* ── API / loading ── */
+#matis-root:not(.light-mode) .m-loading { color: rgba(202,162,88,0.5); }
+#matis-root:not(.light-mode) .m-spinner { border-color: rgba(202,162,88,0.1); border-top-color: var(--su-gold-d); }
+#matis-root:not(.light-mode) .m-api-badge {
+  background: rgba(202,162,88,0.07);
+  border-color: rgba(202,162,88,0.2);
+  color: rgba(202,162,88,0.5);
+}
+#matis-root:not(.light-mode) .m-api-err { background: rgba(220,68,5,0.05); border-left-color: var(--su-orange); color: #f07040; }
+
+/* ── Tags ── */
+#matis-root:not(.light-mode) .m-tag { background: rgba(97,34,59,0.4); color: var(--su-gold-l); border: 1px solid rgba(202,162,88,0.15); }
+#matis-root:not(.light-mode) .m-tag.gold  { background: rgba(202,162,88,0.15); color: var(--su-gold); }
+#matis-root:not(.light-mode) .m-tag.green { background: rgba(26,96,64,0.25); color: var(--su-green); }
+#matis-root:not(.light-mode) .m-tag.new   { background: rgba(220,68,5,0.2); color: #f07040; }
+#matis-root:not(.light-mode) .m-badge          { background: rgba(202,162,88,0.15); color: var(--su-gold); border: 1px solid rgba(202,162,88,0.2); }
+#matis-root:not(.light-mode) .m-badge.green    { background: rgba(26,96,64,0.25); color: var(--su-green); }
+#matis-root:not(.light-mode) .m-badge.blue     { background: rgba(26,58,112,0.25); color: #6ab4ff; }
+
+/* ── Divider ── */
+#matis-root:not(.light-mode) .m-divider { border-top-color: rgba(202,162,88,0.1); }
+
+/* ── Modal ── */
+#matis-root:not(.light-mode) #m-modal-box {
+  background: #130b0e;
+  border-top-color: var(--su-maroon);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.8), 0 0 0 1px rgba(202,162,88,0.12);
+}
+
+/* ── Search highlight ── */
+#matis-root:not(.light-mode) .m-search-hl {
+  background: rgba(202,162,88,0.22);
+  color: var(--su-white);
+}
+
+/* ── Chart background canvases ── */
+#matis-root:not(.light-mode) canvas { background: transparent; }
+
+/* ── Print btn / topbar btns already OK (on maroon) ── */
+
+/* ── CRT ambient vignette on page content ── */
+#matis-root:not(.light-mode) #m-page {
+  background: #0e0508;
+}
+#matis-root:not(.light-mode) #m-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 40%, transparent 55%, rgba(0,0,0,0.45) 100%);
+}
+
+/* Ensure content sits above the vignette */
+#matis-root:not(.light-mode) #m-topbar,
+#matis-root:not(.light-mode) #m-nav-bar,
+#matis-root:not(.light-mode) #m-content { position: relative; z-index: 1; }
+
+#matis-root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── BACKGROUNDS ── */
+#m-crest-bg {
+  position: absolute; inset: 0; display: flex;
+  align-items: center; justify-content: center;
+  pointer-events: none; z-index: 0; opacity: 0.055;
+}
+#m-crest-bg svg { width: min(52vw,52vh); height: min(52vw,52vh); }
+#m-scanlines {
+  position: absolute; inset: 0; z-index: 100; pointer-events: none;
+  background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.1) 2px,rgba(0,0,0,0.1) 4px);
+}
+#matis-root.light-mode #m-scanlines { display: none; }
+#m-glitch {
+  position: absolute; inset: 0; z-index: 200; pointer-events: none;
+  opacity: 0; mix-blend-mode: screen;
+  background: repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(202,162,88,0.04) 2px,rgba(202,162,88,0.04) 4px);
+}
+#m-glitch.active { animation: mGlitch 0.15s steps(1) forwards; }
+@keyframes mGlitch {
+  0%  { opacity:0; background-position:0 0; clip-path:inset(20% 0 60% 0); }
+  20% { opacity:1; background-position:6px 0; clip-path:inset(40% 0 20% 0); filter:hue-rotate(30deg); }
+  40% { opacity:0.6; background-position:-4px 0; clip-path:inset(10% 0 70% 0); }
+  60% { opacity:1; background-position:9px 0; clip-path:inset(60% 0 5% 0); filter:hue-rotate(60deg); }
+  80% { opacity:0.3; clip-path:inset(30% 0 40% 0); }
+  100%{ opacity:0; }
+}
+#m-noise {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+#m-kbd {
+  position: absolute; bottom: 10px; right: 14px; z-index: 90;
+  font-family: 'Share Tech Mono', monospace; font-size: 0.62rem;
+  color: var(--term-dim); letter-spacing: 0.5px; pointer-events: none;
+}
+
+/* ── BOOT SCREEN ── */
+#m-boot {
+  position: absolute; inset: 0; z-index: 999;
+  background: var(--term-bg);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px; transition: opacity 0.8s;
+}
+#m-boot.fade-out { opacity: 0; pointer-events: none; }
+.m-boot-logo {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: var(--su-white);
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: var(--glow-strong);
+  margin-bottom: 20px;
+  opacity: 0;
+}
+.m-boot-logo span {
+  display: block;
+  font-size: 0.52em;
+  font-weight: 400;
+  color: var(--su-gold);
+  letter-spacing: 6px;
+  margin-top: 6px;
+}
+.m-boot-bar-wrap {
+  width: min(460px, 86vw); height: 3px;
+  background: rgba(202,162,88,0.15);
+  margin-top: 14px; opacity: 0;
+}
+.m-boot-bar-fill {
+  height: 100%; background: var(--su-gold);
+  width: 0%; transition: width 1.5s linear;
+  box-shadow: 0 0 10px var(--su-gold);
+}
+.m-boot-line {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem; color: var(--term-gold);
+  width: min(500px, 90vw); opacity: 0;
+}
+.m-boot-line .ok { color: var(--term-green); }
+.m-boot-line.show { animation: mBootFade 0.2s forwards; }
+@keyframes mBootFade { to { opacity: 1; } }
+
+/* ══════════════════════════════════════════════════
+   TERMINAL VIEW
+   ══════════════════════════════════════════════════ */
+#m-terminal {
+  position: absolute; inset: 0; z-index: 10;
+  display: flex; flex-direction: column;
+  transition: opacity 0.3s, transform 0.3s;
+}
+#m-terminal.hidden { opacity: 0; pointer-events: none; transform: scale(0.98); }
+
+/* ── Terminal title bar ── */
+#m-term-bar {
+  background: linear-gradient(90deg, var(--su-maroon-d) 0%, var(--su-maroon) 50%, var(--su-maroon-d) 100%);
+  padding: 0 16px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 2px solid var(--su-gold);
+  flex-shrink: 0; height: 42px;
+  position: relative; overflow: hidden;
+}
+#m-term-bar::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(202,162,88,0.7), transparent);
+}
+.m-dots { display: flex; gap: 6px; }
+.m-dot { width: 12px; height: 12px; border-radius: 50%; }
+.m-dot:nth-child(1){ background: #dc4405; }
+.m-dot:nth-child(2){ background: var(--su-gold); }
+.m-dot:nth-child(3){ background: var(--su-green); }
+
+#m-term-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--su-white);
+  letter-spacing: 2px; text-transform: uppercase;
+  flex: 1; text-align: center; opacity: 0.9;
+}
+#m-term-bar-right {
+  display: flex; align-items: center; gap: 10px; margin-left: auto;
+}
+#m-term-clock {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem; color: var(--su-gold);
+  letter-spacing: 0.5px; opacity: 0.8; white-space: nowrap;
+}
+#m-term-theme-btn {
+  background: rgba(202,162,88,0.12);
+  border: 1px solid rgba(202,162,88,0.35);
+  color: var(--su-gold);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem; padding: 3px 11px;
+  cursor: pointer; letter-spacing: 1.2px;
+  border-radius: 2px; transition: all 0.2s;
+  white-space: nowrap; text-transform: uppercase;
+}
+#m-term-theme-btn:hover {
+  background: rgba(202,162,88,0.25);
+  border-color: var(--su-gold); color: var(--su-white);
+}
+
+/* ── Terminal body ── */
+#m-term-body {
+  flex: 1; overflow-y: auto;
+  padding: 18px 24px; display: flex; flex-direction: column; gap: 2px;
+  scrollbar-width: thin; scrollbar-color: var(--su-maroon) transparent;
+}
+#m-term-body::-webkit-scrollbar { width: 4px; }
+#m-term-body::-webkit-scrollbar-thumb { background: var(--su-maroon); border-radius: 2px; }
+
+.m-line {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.83rem; line-height: 1.55;
+  white-space: pre-wrap; color: var(--term-gold);
+  opacity: 0; animation: mFadeIn 0.04s forwards;
+}
+@keyframes mFadeIn { to { opacity: 1; } }
+.m-line.dim    { color: var(--term-dim); }
+.m-line.bright { color: var(--su-white); }
+.m-line.green  { color: var(--term-green); }
+.m-line.red    { color: var(--term-red); }
+.m-line.cyan   { color: var(--term-cyan); }
+.m-line.maroon { color: var(--su-gold-l); }
+.m-line.header { color: var(--su-white); font-family: 'Raleway',sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 2px; }
+.m-line.selectable {
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  padding-left: 5px;
+  transition: border-color 0.12s, color 0.12s;
+}
+.m-line.selectable:hover { border-left-color: var(--su-gold); color: var(--su-white); }
+.m-line.selected {
+  border-left-color: var(--term-green) !important;
+  color: var(--term-green) !important;
+  animation: mBlink 0.4s step-end 3;
+}
+@keyframes mBlink { 0%,100%{opacity:1;}50%{opacity:0.3;} }
+
+/* ── Prompt ── */
+#m-prompt-area {
+  padding: 8px 24px 14px;
+  display: flex; align-items: center;
+  border-top: 1px solid rgba(202,162,88,0.18);
+  flex-shrink: 0;
+}
+#m-prompt-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.83rem; color: var(--su-gold-l);
+  text-shadow: var(--glow); white-space: nowrap;
+}
+#m-prompt-input {
+  background: transparent; border: none; outline: none;
+  color: var(--su-white);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.83rem; flex: 1;
+  caret-color: var(--su-gold);
+}
+#m-autocomplete {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.83rem;
+  color: rgba(202,162,88,0.3);
+  pointer-events: none; white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════
+   PAGE VIEW
+   ══════════════════════════════════════════════════ */
+#m-page {
+  position: absolute; inset: 0; z-index: 50;
+  background: var(--page-bg);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+}
+#m-page.visible { opacity: 1; pointer-events: all; }
+
+/* ── Topbar ── */
+#m-topbar {
+  background: linear-gradient(135deg, var(--su-maroon-d) 0%, var(--su-maroon) 55%, var(--su-maroon-l) 100%);
+  color: var(--su-white);
+  display: flex; align-items: stretch;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--su-gold);
+  flex-shrink: 0; min-height: 58px;
+  position: relative; overflow: hidden;
+}
+/* S-graphic accent behind topbar */
+#m-topbar::before {
+  content: '';
+  position: absolute; top: -20px; right: -10px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 28px solid rgba(202,162,88,0.1);
+  pointer-events: none;
+}
+#m-topbar::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(202,162,88,0.7), transparent);
+}
+.m-logo-area {
+  display: flex; align-items: center;
+  gap: 14px; min-width: 0;
+  padding: 10px 22px;
+  border-right: 1px solid rgba(202,162,88,0.2);
+}
+.m-mini-crest { width: 36px; height: 36px; flex-shrink: 0; }
+
+/* SU S-stream wordmark area */
+.m-uni-name {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--su-white);
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.m-uni-dept {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem; font-weight: 600;
+  color: var(--su-gold);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 3px; opacity: 0.9;
+}
+.m-breadcrumb {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.63rem;
+  color: rgba(202,162,88,0.45);
+  display: flex; align-items: center; gap: 4px;
+  margin-top: 2px;
+}
+.m-breadcrumb span { color: var(--su-gold); }
+
+/* ── Topbar right ── */
+#m-topbar-right {
+  display: flex; align-items: center;
+  gap: 0; flex-shrink: 0; padding: 0 8px;
+  border-left: 1px solid rgba(202,162,88,0.18);
+}
+#m-search {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(202,162,88,0.28);
+  border-radius: 2px;
+  color: var(--su-white);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  padding: 5px 10px; outline: none;
+  width: 130px; margin: 0 5px;
+  transition: all 0.22s;
+}
+#m-search::placeholder { color: rgba(202,162,88,0.35); }
+#m-search:focus { width: 175px; border-color: var(--su-gold); background: rgba(0,0,0,0.4); }
+.m-topbar-btn {
+  background: transparent; border: none;
+  border-left: 1px solid rgba(202,162,88,0.18);
+  color: rgba(202,162,88,0.6);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.66rem; padding: 0 14px;
+  cursor: pointer; letter-spacing: 1.2px;
+  transition: all 0.18s; white-space: nowrap;
+  height: 100%; text-transform: uppercase;
+}
+.m-topbar-btn:hover { color: var(--su-white); background: rgba(202,162,88,0.1); }
+#m-back-btn {
+  background: rgba(202,162,88,0.12);
+  border-left: 1px solid rgba(202,162,88,0.25);
+  color: var(--su-gold);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700; font-size: 0.66rem;
+  padding: 0 18px; cursor: pointer;
+  letter-spacing: 1.5px; white-space: nowrap;
+  height: 100%; transition: all 0.18s;
+  text-transform: uppercase; border-right: none;
+  border-top: none; border-bottom: none;
+}
+#m-back-btn:hover { background: rgba(202,162,88,0.22); color: var(--su-white); }
+
+/* ── Nav bar ── */
+#m-nav-bar {
+  background: var(--su-maroon-d);
+  padding: 0 16px;
+  display: flex; align-items: stretch; gap: 4px;
+  border-bottom: 2px solid rgba(202,162,88,0.28);
+  flex-shrink: 0; overflow-x: auto;
+  scrollbar-width: none; height: 64px;
+}
+#m-nav-bar::-webkit-scrollbar { display: none; }
+.m-nav-btn {
+  background: transparent; border: none;
+  border-bottom: 3px solid transparent;
+  color: rgba(202,162,88,0.48);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.7rem; font-weight: 600;
+  padding: 0 18px; cursor: pointer;
+  letter-spacing: 0.8px; transition: all 0.18s;
+  white-space: nowrap; height: 100%;
+  text-transform: uppercase;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 5px;
+  min-width: 72px; flex-shrink: 0;
+}
+.m-nav-icon { font-size: 1rem; line-height: 1; }
+.m-nav-label { font-size: 0.6rem; letter-spacing: 0.8px; }
+.m-nav-btn:hover {
+  color: var(--su-gold);
+  background: rgba(202,162,88,0.08);
+  border-bottom-color: rgba(202,162,88,0.4);
+}
+.m-nav-btn.active {
+  color: var(--su-gold);
+  background: rgba(202,162,88,0.13);
+  border-bottom-color: var(--su-gold);
+  font-weight: 800;
+  box-shadow: inset 0 -1px 0 rgba(202,162,88,0.12);
+}
+
+/* ── Content area ── */
+#m-content {
+  flex: 1; overflow-y: auto;
+  padding: 38px 52px 56px;
+  background: var(--page-bg);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(97,34,59,0.3) transparent;
+}
+#m-content::-webkit-scrollbar { width: 5px; }
+#m-content::-webkit-scrollbar-thumb { background: rgba(97,34,59,0.25); border-radius: 3px; }
+
+/* ══════════════════════════════════════════════════
+   PAGE TYPOGRAPHY — SU brand: Raleway
+   ══════════════════════════════════════════════════ */
+.m-h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.35rem; font-weight: 800;
+  color: var(--su-maroon);
+  padding-bottom: 14px; margin-bottom: 28px;
+  letter-spacing: -0.3px; line-height: 1.12;
+  position: relative; text-transform: none;
+}
+.m-h1::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 68px; height: 3px;
+  background: linear-gradient(90deg, var(--su-gold), rgba(202,162,88,0.2), transparent);
+}
+.m-h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem; font-weight: 700;
+  color: var(--su-maroon);
+  margin: 36px 0 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.m-h2::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(97,34,59,0.25), transparent);
+}
+.m-h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--su-maroon); margin: 18px 0 9px;
+}
+.m-p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.05rem; font-weight: 400;
+  line-height: 1.82; color: var(--page-text2);
+  margin-bottom: 16px; max-width: 74ch;
+}
+.m-link {
+  color: var(--su-maroon); text-decoration: none;
+  border-bottom: 1px solid rgba(97,34,59,0.3);
+  transition: border-color 0.15s, color 0.15s;
+}
+.m-link:hover { color: var(--su-gold-d); border-color: var(--su-gold); }
+
+/* ── Tags / badges ── */
+.m-tag {
+  display: inline-block;
+  background: var(--su-maroon); color: var(--su-white);
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: 0.61rem; padding: 3px 9px;
+  border-radius: 2px; margin: 2px;
+  letter-spacing: 0.8px; text-transform: uppercase;
+}
+.m-tag.gold { background: var(--su-gold); color: var(--su-dark); }
+.m-tag.green { background: var(--su-green); color: var(--su-dark); }
+.m-tag.new {
+  background: var(--su-orange); color: #fff;
+  animation: mNewPulse 2s ease-in-out infinite;
+}
+@keyframes mNewPulse { 0%,100%{opacity:1;}50%{opacity:0.72;} }
+.m-badge {
+  display: inline-block;
+  background: var(--su-gold); color: var(--su-dark);
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: 0.6rem; padding: 3px 9px;
+  border-radius: 20px; letter-spacing: 0.8px;
+  margin-left: 8px; vertical-align: middle;
+  text-transform: uppercase;
+}
+.m-badge.green { background: #1a6040; color: #fff; }
+.m-badge.blue  { background: #1a3a70; color: #fff; }
+
+/* ── Divider ── */
+.m-divider { border: none; border-top: 1px solid var(--page-border); margin: 28px 0; }
+
+/* ── Cards ── */
+.m-card {
+  background: var(--page-card);
+  border-left: 4px solid var(--su-maroon);
+  padding: 22px 26px; margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(97,34,59,0.06), 0 5px 18px rgba(0,0,0,0.04);
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  border-radius: 0 4px 4px 0; position: relative;
+}
+.m-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 3px 12px rgba(97,34,59,0.12), 0 10px 28px rgba(0,0,0,0.06);
+  border-left-color: var(--su-gold-d);
+}
+.m-card h3 {
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  color: var(--su-maroon); font-size: 1.08rem; margin-bottom: 8px;
+}
+.m-card p {
+  font-family: 'Raleway', sans-serif; font-size: 0.97rem;
+  color: var(--page-text2); line-height: 1.72;
+}
+.m-card .meta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem; color: var(--su-gold-d);
+  margin-top: 10px; letter-spacing: 0.3px;
+  border-top: 1px solid var(--page-border); padding-top: 10px;
+}
+
+/* ── Grids ── */
+.m-grid  { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 16px; margin: 16px 0; }
+.m-grid3 { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 14px; margin: 16px 0; }
+
+/* ── Stat cards — Confident Maroon dominant, Gold accent ── */
+.m-stat {
+  background: linear-gradient(155deg, var(--su-maroon) 0%, var(--su-maroon-d) 100%);
+  color: var(--su-white);
+  padding: 26px 18px 22px;
+  text-align: center; border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(97,34,59,0.28);
+  position: relative; overflow: hidden;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.m-stat:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(97,34,59,0.38); }
+.m-stat::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--su-gold), transparent);
+}
+.m-stat::after {
+  content: '';
+  position: absolute; top: -30px; right: -20px;
+  width: 80px; height: 80px; border-radius: 50%;
+  border: 18px solid rgba(202,162,88,0.08);
+}
+.m-stat .num {
+  font-family: 'Raleway', sans-serif; font-weight: 800;
+  font-size: 2.8rem; color: var(--su-gold);
+  display: block; line-height: 1;
+  text-shadow: 0 0 16px rgba(202,162,88,0.4);
+}
+.m-stat .lbl {
+  font-family: 'Raleway', sans-serif; font-weight: 600;
+  font-size: 0.63rem; letter-spacing: 1.2px;
+  text-transform: uppercase; opacity: 0.72; margin-top: 8px;
+}
+
+/* ── Infobox ── */
+.m-infobox {
+  background: var(--page-bg2);
+  border: 1px solid var(--page-border);
+  border-left: 4px solid var(--su-gold-d);
+  padding: 16px 22px; margin: 18px 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem; line-height: 1.74;
+  color: var(--page-text); border-radius: 0 4px 4px 0;
+}
+.m-infobox.alert { background: rgba(202,162,88,0.08); border-left-color: var(--su-gold-d); }
+.m-infobox.success { background: rgba(130,204,174,0.1); border-left-color: var(--su-green); }
+
+/* ── Table ── */
+table.m-table {
+  width: 100%; border-collapse: collapse;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.97rem; margin: 16px 0;
+}
+table.m-table th {
+  background: var(--su-maroon); color: var(--su-white);
+  padding: 11px 16px; text-align: left;
+  font-weight: 700; font-size: 0.68rem;
+  letter-spacing: 1.2px; text-transform: uppercase;
+}
+table.m-table td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--page-border);
+  color: var(--page-text); vertical-align: middle;
+}
+table.m-table tr:last-child td { border-bottom: none; }
+table.m-table tr:nth-child(even) td { background: var(--page-bg2); }
+table.m-table tr:hover td { background: rgba(202,162,88,0.06); }
+.trend-up { color: #1a6040; font-weight: 700; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; }
+
+/* ── Profiles ── */
+.m-profile-grid {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap: 18px; margin: 16px 0;
+}
+.m-profile {
+  background: var(--page-card);
+  border-top: 3px solid var(--su-maroon);
+  padding: 24px 18px 20px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(97,34,59,0.09);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer; border-radius: 0 0 4px 4px;
+  position: relative; overflow: hidden;
+}
+.m-profile::after {
+  content: 'View profile →';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(135deg, var(--su-maroon), var(--su-maroon-d));
+  color: var(--su-gold); font-family: 'Raleway', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 1px; padding: 7px; text-transform: uppercase;
+  transform: translateY(100%); transition: transform 0.2s;
+}
+.m-profile:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(97,34,59,0.2); }
+.m-profile:hover::after { transform: translateY(0); }
+.m-avatar {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--su-maroon), var(--su-maroon-d));
+  margin: 0 auto 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Raleway', sans-serif; font-weight: 800;
+  font-size: 1.4rem; color: var(--su-gold);
+  border: 2px solid rgba(202,162,88,0.45);
+  box-shadow: 0 0 0 5px rgba(97,34,59,0.1);
+}
+.m-profile h3 {
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  color: var(--su-maroon); font-size: 0.95rem;
+  margin-bottom: 5px; line-height: 1.3;
+}
+.m-profile .role {
+  font-family: 'Raleway', sans-serif; font-weight: 600;
+  font-size: 0.6rem; color: var(--su-gold-d);
+  letter-spacing: 1px; margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* ── Events ── */
+.m-event {
+  background: var(--page-card);
+  display: flex; gap: 0;
+  margin-bottom: 12px; border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(97,34,59,0.08);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.m-event:hover { box-shadow: 0 6px 22px rgba(97,34,59,0.14); transform: translateY(-2px); }
+.m-edate {
+  background: linear-gradient(180deg, var(--su-maroon), var(--su-maroon-d));
+  color: var(--su-white); padding: 14px 16px;
+  text-align: center; min-width: 62px; flex-shrink: 0;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.m-edate .day { font-family: 'Raleway',sans-serif; font-weight: 800; font-size: 2rem; color: var(--su-gold); line-height: 1; }
+.m-edate .mon { font-family: 'Raleway',sans-serif; font-weight: 600; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+.m-ebody { padding: 14px 18px; flex: 1; border-left: 3px solid rgba(202,162,88,0.2); }
+.m-ebody h4 { font-family: 'Raleway',sans-serif; font-weight: 700; color: var(--su-maroon); font-size: 1.02rem; margin-bottom: 5px; }
+.m-ebody p  { font-family: 'Raleway',sans-serif; font-size: 0.93rem; color: var(--page-text2); line-height: 1.55; }
+.m-ebody .emeta { font-family: 'Share Tech Mono',monospace; font-size: 0.68rem; color: var(--su-gold-d); margin-top: 8px; }
+.m-rsvp-btn {
+  background: transparent; border: 1px solid rgba(97,34,59,0.35);
+  color: var(--su-maroon);
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: 0.65rem; padding: 5px 14px;
+  cursor: pointer; letter-spacing: 0.8px;
+  transition: all 0.2s; margin-top: 8px;
+  border-radius: 2px; text-transform: uppercase;
+}
+.m-rsvp-btn:hover { background: var(--su-maroon); color: var(--su-white); }
+.m-rsvp-btn.rsvpd { background: #1a6040; color: #fff; border-color: #1a6040; }
+
+/* ── Publications ── */
+.m-pub {
+  background: var(--page-card);
+  border-left: 4px solid var(--su-gold-d);
+  padding: 16px 22px; margin-bottom: 12px;
+  box-shadow: 0 1px 5px rgba(97,34,59,0.06);
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  border-radius: 0 4px 4px 0;
+}
+.m-pub:hover { box-shadow: 0 5px 20px rgba(97,34,59,0.12); transform: translateX(3px); border-left-color: var(--su-maroon); }
+.m-pub h4 { font-family: 'Raleway',sans-serif; font-weight: 700; color: var(--page-text); font-size: 1rem; margin-bottom: 5px; line-height: 1.48; }
+.m-pub .authors { font-family: 'Raleway',sans-serif; font-size: 0.92rem; color: var(--page-text2); font-style: italic; margin-bottom: 5px; }
+.m-pub .venue { font-family: 'Share Tech Mono',monospace; font-size: 0.7rem; color: var(--su-maroon); }
+.m-pub a { color: var(--su-maroon); text-decoration: none; font-size: 0.7rem; font-family: 'Share Tech Mono',monospace; border-bottom: 1px solid rgba(97,34,59,0.3); }
+.m-pub a:hover { color: var(--su-gold-d); border-color: var(--su-gold); }
+
+/* ── Misc ── */
+.m-prog-bar { height: 6px; background: var(--page-bg2); border-radius: 3px; overflow: hidden; margin: 6px 0 12px; }
+.m-prog-fill { height: 100%; background: linear-gradient(90deg, var(--su-maroon), var(--su-gold)); border-radius: 3px; }
+.m-acc-item { border-bottom: 1px solid var(--page-border); }
+.m-acc-btn {
+  width: 100%; background: none; border: none;
+  padding: 15px 0; display: flex; justify-content: space-between;
+  align-items: center; cursor: pointer;
+  font-family: 'Raleway',sans-serif; font-size: 1.02rem; font-weight: 600;
+  color: var(--su-maroon); text-align: left; transition: color 0.15s;
+}
+.m-acc-btn:hover { color: var(--su-gold-d); }
+.m-acc-arrow { font-size: 0.72rem; transition: transform 0.25s; color: var(--su-gold-d); font-family: 'Share Tech Mono',monospace; }
+.m-acc-body { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+.m-acc-body.open { max-height: 1000px; }
+.m-acc-inner { padding: 0 0 16px; font-family: 'Raleway',sans-serif; font-size: 0.97rem; line-height: 1.76; color: var(--page-text); }
+.m-mod-row {
+  display: grid; grid-template-columns: 96px 1fr 60px 56px;
+  gap: 8px; padding: 9px 12px;
+  border-bottom: 1px solid var(--page-border);
+  font-family: 'Raleway',sans-serif; font-size: 0.95rem;
+  align-items: center; transition: background 0.1s;
+}
+.m-mod-row:nth-child(even){ background: var(--page-bg2); }
+.m-mod-row:hover{ background: rgba(202,162,88,0.07); }
+.m-mod-row .code { font-family: 'Share Tech Mono',monospace; font-size: 0.72rem; color: var(--su-maroon); font-weight: bold; }
+.m-mod-row .sem  { font-family: 'Share Tech Mono',monospace; font-size: 0.7rem; color: var(--page-text2); text-align: center; opacity: 0.6; }
+.m-mod-row .cred { font-family: 'Share Tech Mono',monospace; font-size: 0.7rem; color: var(--su-gold-d); text-align: right; font-weight: bold; }
+.m-loading {
+  display: flex; align-items: center; gap: 12px;
+  padding: 28px; font-family: 'Share Tech Mono',monospace;
+  font-size: 0.8rem; color: var(--su-maroon);
+}
+.m-spinner {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid rgba(97,34,59,0.2);
+  border-top-color: var(--su-maroon);
+  animation: mSpin 0.8s linear infinite; flex-shrink: 0;
+}
+@keyframes mSpin { to{ transform: rotate(360deg); } }
+.m-api-badge {
+  display: inline-block;
+  background: rgba(202,162,88,0.12);
+  border: 1px solid rgba(202,162,88,0.3);
+  color: var(--su-gold-d);
+  font-family: 'Share Tech Mono',monospace; font-size: 0.64rem;
+  padding: 3px 10px; border-radius: 2px; letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.m-api-err {
+  padding: 14px 16px; font-family: 'Raleway',sans-serif;
+  font-size: 0.88rem; color: var(--su-orange);
+  background: rgba(220,68,5,0.07); border-left: 3px solid var(--su-orange);
+  margin-bottom: 8px; border-radius: 0 3px 3px 0;
+}
+.m-search-hl { background: rgba(202,162,88,0.35); border-radius: 2px; padding: 0 2px; }
+.m-tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+
+/* ── Modal ── */
+#m-modal {
+  position: absolute; inset: 0; z-index: 300;
+  background: rgba(14,5,8,0.6);
+  display: none; align-items: center;
+  justify-content: center; padding: 24px;
+  backdrop-filter: blur(5px);
+}
+#m-modal.open { display: flex; }
+#m-modal-box {
+  background: var(--page-bg);
+  max-width: 660px; width: 100%; max-height: 86vh;
+  overflow-y: auto;
+  border-top: 4px solid var(--su-maroon);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(202,162,88,0.18);
+  position: relative; animation: mModalIn 0.24s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes mModalIn { from{ opacity:0; transform:translateY(-16px) scale(0.97); } to{ opacity:1; transform:none; } }
+#m-modal-close {
+  position: sticky; top: 0; float: right;
+  background: var(--su-maroon); border: none;
+  color: var(--su-white);
+  font-family: 'Raleway',sans-serif; font-weight: 700;
+  font-size: 0.7rem; padding: 9px 18px;
+  cursor: pointer; letter-spacing: 1.5px;
+  z-index: 1; transition: background 0.15s;
+  text-transform: uppercase;
+}
+#m-modal-close:hover { background: var(--su-gold-d); color: var(--su-dark); }
+#m-modal-content { padding: 28px 32px 34px; clear: both; }
+
+/* ── Responsive ── */
+@media (max-width:720px){
+  #matis-root { height: 100dvh; height: 100svh; }
+  #m-content { padding: 16px 12px 40px; }
+  .m-h1 { font-size: 1.7rem; }
+  .m-h2 { font-size: 1.1rem; }
+  .m-p  { font-size: 0.97rem; }
+  .m-grid,.m-grid3 { grid-template-columns: 1fr; }
+  .m-profile-grid { grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); }
+  #m-search,#m-print-btn { display: none; }
+  .m-event { flex-direction: column; }
+  .m-ebody { border-left: none; border-top: 3px solid rgba(202,162,88,0.25); }
+  .m-mod-row { grid-template-columns: 84px 1fr 52px; }
+  .m-mod-row .cred { display: none; }
+  #m-term-clock { display: none; }
+  #m-kbd { display: none; }
+  .m-logo-area { padding: 8px 12px; }
+  #m-nav-bar { padding: 0 4px; height: 54px; }
+  .m-nav-btn { padding: 0 7px; }
+  .m-nav-icon { font-size: 0.8rem; }
+  .m-nav-label { font-size: 0.5rem; }
+  #m-term-theme-btn { font-size: 0.55rem; padding: 2px 6px; }
+  .prog-info-grid { grid-template-columns: 1fr !important; }
+  #m-back-btn { font-size: 0.6rem; padding: 0 8px; }
+}
+
+/* ── Programme info grid ── */
+.prog-info-grid {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap: 12px; margin-top: 16px;
+}
+.prog-info-box {
+  background: var(--page-bg2); padding: 14px 16px;
+  border-top: 3px solid var(--su-maroon);
+}
+.prog-info-box.gold { border-top-color: var(--su-gold-d); }
+.prog-info-box.green { border-top-color: #1a6040; }
+.prog-info-box.blue  { border-top-color: #1a3a70; }
+.prog-info-box.orange{ border-top-color: var(--su-orange); }
+.prog-info-hdr {
+  font-family:'Share Tech Mono',monospace; font-size:0.63rem;
+  color:var(--su-gold-d); margin-bottom:8px;
+  text-transform:uppercase; letter-spacing:1px;
+}
+.prog-info-body { font-size:0.88rem; line-height:1.75; }
+
+/* ── Curriculum accordion ── */
+.curr-section { margin:12px 0; border:1px solid var(--page-border); border-radius:3px; overflow:hidden; }
+.curr-hdr {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 14px; background:var(--page-bg2); cursor:pointer;
+  font-family:'Raleway',sans-serif; font-weight:700; font-size:0.82rem;
+  color:var(--page-maroon); user-select:none;
+  border-left:3px solid var(--su-maroon);
+}
+.curr-hdr:hover { background:var(--page-card); }
+.curr-chevron { transition:transform 0.2s; font-size:0.7rem; }
+.curr-hdr.open .curr-chevron { transform:rotate(90deg); }
+.curr-body { display:none; padding:12px 14px 16px; }
+.curr-body.visible { display:block; }
+.curr-row {
+  display:grid; grid-template-columns:88px 1fr 60px 56px;
+  gap:8px; padding:6px 0; border-bottom:1px solid var(--page-border);
+  font-size:0.85rem; align-items:center;
+}
+.curr-row:last-child { border-bottom:none; }
+.curr-code { font-family:'Share Tech Mono',monospace; font-size:0.74rem; color:var(--su-maroon); font-weight:700; }
+.curr-sem { font-size:0.73rem; color:var(--page-text2); }
+.curr-cr  { font-size:0.73rem; color:var(--su-gold-d); text-align:right; }
+.curr-yr-hdr {
+  font-family:'Share Tech Mono',monospace; font-size:0.68rem;
+  color:var(--su-gold-d); text-transform:uppercase; letter-spacing:1px;
+  padding:8px 0 4px; margin-top:4px;
+}
+
+/* ── Range sliders ── */
+.m-slider-wrap { margin:14px 0 4px; }
+.m-slider-label {
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'Share Tech Mono',monospace; font-size:0.68rem;
+  color:var(--su-gold-d); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;
+}
+.m-slider-val { color:var(--su-gold); font-weight:700; font-size:0.82rem; }
+input[type=range] {
+  width:100%; -webkit-appearance:none; appearance:none;
+  height:4px; background:var(--page-border); border-radius:2px; outline:none; cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; width:17px; height:17px; border-radius:50%;
+  background:var(--su-maroon); border:3px solid var(--su-gold); cursor:pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width:15px; height:15px; border-radius:50%;
+  background:var(--su-maroon); border:3px solid var(--su-gold); cursor:pointer;
+}
+
+/* ── Chart containers ── */
+.chart-container { position:relative; width:100%; height:260px; margin:14px 0; }
+.chart-wrap-2col { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+
+/* ══ DEGREE ADVISOR ══ */
+.advisor-step { margin-bottom:28px; }
+.advisor-step-title {
+  font-family:'Share Tech Mono',monospace; font-size:0.72rem;
+  color:var(--su-gold-d); text-transform:uppercase; letter-spacing:2px;
+  margin-bottom:12px; display:flex; align-items:center; gap:8px;
+}
+.advisor-step-title::before { content:''; display:inline-block; width:18px; height:2px; background:var(--su-maroon); }
+.advisor-chip-group { display:flex; flex-wrap:wrap; gap:8px; }
+.advisor-chip {
+  background: var(--page-bg2);
+  border: 2px solid var(--page-border);
+  color: var(--page-text);
+  font-family:'Raleway',sans-serif; font-size:0.85rem; font-weight:600;
+  padding: 8px 18px; border-radius:24px; cursor:pointer;
+  transition: all 0.2s; user-select:none;
+}
+.advisor-chip:hover { border-color:var(--su-gold); color:var(--su-gold); }
+.advisor-chip.selected {
+  background:var(--su-maroon); border-color:var(--su-maroon);
+  color:var(--su-white);
+  box-shadow: 0 0 12px rgba(97,34,59,0.4);
+}
+#matis-root:not(.light-mode) .advisor-chip { background:#1a0d12; border-color:rgba(202,162,88,0.2); color:rgba(202,162,88,0.7); }
+#matis-root:not(.light-mode) .advisor-chip:hover { border-color:var(--su-gold); color:var(--su-gold); }
+#matis-root:not(.light-mode) .advisor-chip.selected { background:var(--su-maroon); border-color:var(--su-gold); color:var(--su-white); }
+.advisor-generate-btn {
+  background: linear-gradient(135deg, var(--su-maroon), var(--su-maroon-d));
+  border: 2px solid var(--su-gold);
+  color: var(--su-gold);
+  font-family:'Raleway',sans-serif; font-weight:800; font-size:0.9rem;
+  padding:12px 32px; cursor:pointer; letter-spacing:1.5px;
+  text-transform:uppercase; transition:all 0.22s;
+  border-radius:3px; margin-top:8px;
+}
+.advisor-generate-btn:hover { background:var(--su-gold); color:var(--su-dark); box-shadow: 0 0 20px rgba(202,162,88,0.5); }
+.advisor-result {
+  margin-top:28px; padding:24px; background:var(--page-card);
+  border-left:4px solid var(--su-gold); border-radius:0 4px 4px 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  animation: mModalIn 0.3s ease;
+}
+#matis-root:not(.light-mode) .advisor-result { background:#160a0f; }
+.advisor-result-title {
+  font-family:'Raleway',sans-serif; font-size:1.35rem; font-weight:800;
+  color:var(--page-maroon); margin-bottom:18px;
+}
+.advisor-rec-section { margin-bottom:20px; }
+.advisor-rec-label {
+  font-family:'Share Tech Mono',monospace; font-size:0.68rem;
+  color:var(--su-gold-d); text-transform:uppercase; letter-spacing:2px;
+  margin-bottom:10px;
+}
+.advisor-mod-pill {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--su-maroon); color:var(--su-white);
+  font-family:'Share Tech Mono',monospace; font-size:0.72rem;
+  padding:5px 12px; border-radius:3px; margin:3px;
+  cursor:pointer; transition:all 0.18s;
+}
+.advisor-mod-pill:hover { background:var(--su-gold); color:var(--su-dark); }
+.advisor-track-card {
+  background:var(--page-bg2); border-top:3px solid var(--su-maroon);
+  padding:14px 18px; margin:8px 0; border-radius:0 0 4px 4px;
+}
+#matis-root:not(.light-mode) .advisor-track-card { background:#130b0e; }
+
+/* ══ CURRICULUM GRAPH ══ */
+#curr-graph-container {
+  width:100%; height:600px; position:relative;
+  background:var(--page-bg); border:1px solid var(--page-border);
+  border-radius:4px; overflow:hidden;
+}
+#matis-root:not(.light-mode) #curr-graph-container { background:#0e0508; }
+.graph-toolbar {
+  display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; align-items:center;
+}
+.graph-filter-btn {
+  background:var(--page-bg2); border:1px solid var(--page-border);
+  color:var(--page-text); font-family:'Raleway',sans-serif; font-weight:700;
+  font-size:0.7rem; padding:6px 16px; cursor:pointer; border-radius:2px;
+  transition:all 0.18s; text-transform:uppercase; letter-spacing:0.8px;
+}
+.graph-filter-btn:hover,.graph-filter-btn.active {
+  background:var(--su-maroon); color:var(--su-white); border-color:var(--su-maroon);
+}
+#matis-root:not(.light-mode) .graph-filter-btn { background:#1a0d12; color:rgba(202,162,88,0.7); border-color:rgba(202,162,88,0.15); }
+#matis-root:not(.light-mode) .graph-filter-btn:hover,
+#matis-root:not(.light-mode) .graph-filter-btn.active { background:var(--su-maroon); color:var(--su-gold); }
+.graph-node-tooltip {
+  position:absolute; pointer-events:none; z-index:200;
+  background:rgba(14,5,8,0.96); border:1px solid var(--su-gold);
+  color:var(--su-gold); font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem; padding:10px 14px; border-radius:3px;
+  max-width:220px; line-height:1.6;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  display:none;
+}
+.graph-legend {
+  display:flex; gap:14px; flex-wrap:wrap; margin-bottom:12px;
+  font-family:'Share Tech Mono',monospace; font-size:0.65rem;
+}
+.graph-legend-item { display:flex; align-items:center; gap:5px; }
+.graph-legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+/* ══ HACKATHON EASTER EGG ══ */
+#hackathon-overlay {
+  position:fixed; inset:0; z-index:9999;
+  display:none; flex-direction:column;
+  align-items:center; justify-content:center;
+  background:rgba(14,5,8,0.97);
+  pointer-events:none;
+}
+#hackathon-overlay.active { display:flex; pointer-events:all; }
+.hack-badge {
+  font-family:'VT323',monospace; font-size:3.5rem;
+  color:var(--su-gold); text-shadow: 0 0 30px rgba(202,162,88,0.8), 0 0 60px rgba(202,162,88,0.4);
+  animation: hackGlow 1s ease-in-out infinite alternate;
+  text-align:center; line-height:1.1;
+}
+@keyframes hackGlow { from{ text-shadow:0 0 20px rgba(202,162,88,0.6);} to{ text-shadow:0 0 60px rgba(202,162,88,1),0 0 100px rgba(97,34,59,0.8);} }
+.hack-sub { font-family:'Share Tech Mono',monospace; font-size:1rem; color:var(--su-green); margin-top:12px; animation:hackGlow 1.5s ease-in-out infinite alternate; }
+.hack-stats {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  margin-top:32px; width:min(480px,90vw);
+}
+.hack-stat {
+  background:rgba(97,34,59,0.3); border:1px solid var(--su-gold);
+  padding:16px; text-align:center; border-radius:3px;
+  animation: mBootFade 0.4s forwards; opacity:0;
+}
+.hack-stat .num { font-family:'VT323',monospace; font-size:2.2rem; color:var(--su-gold); display:block; }
+.hack-stat .lbl { font-family:'Share Tech Mono',monospace; font-size:0.6rem; color:rgba(202,162,88,0.6); text-transform:uppercase; letter-spacing:1px; }
+.hack-dismiss { margin-top:28px; font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:rgba(202,162,88,0.45); cursor:pointer; }
+.hack-dismiss:hover { color:var(--su-gold); }
+.hack-achievement {
+  display:inline-block; background:linear-gradient(135deg,#b8860b,#ffd700,#b8860b);
+  color:#1a0d00; font-family:'Raleway',sans-serif; font-weight:800;
+  font-size:0.75rem; padding:8px 20px; border-radius:20px;
+  margin-top:16px; letter-spacing:1px; text-transform:uppercase;
+  animation:hackBounce 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+@keyframes hackBounce { 0%{transform:scale(0) rotate(-10deg);} 100%{transform:scale(1) rotate(0deg);} }
+
+/* ══ ENHANCED GLITCH ══ */
+@keyframes mGlitchStrong {
+  0%  { transform: skewX(0deg); opacity:1; clip-path:none; }
+  5%  { transform: skewX(-8deg) translateX(-6px); opacity:0.85; clip-path:inset(20% 0 30% 0); }
+  10% { transform: skewX(6deg) translateX(4px); opacity:0.9; clip-path:inset(60% 0 10% 0); }
+  15% { transform: skewX(-3deg); opacity:1; clip-path:none; }
+  20% { transform: skewX(10deg) translateX(-8px); opacity:0.75; clip-path:inset(0% 0 70% 0); }
+  25% { transform: skewX(0deg); opacity:1; clip-path:none; }
+  80% { transform: translateX(0); }
+  85% { transform: translateX(-4px); opacity:0.8; }
+  90% { transform: translateX(3px); }
+  100%{ transform: translateX(0); opacity:1; clip-path:none; }
+}
+#m-glitch.strong-glitch { animation: mGlitchStrong 0.4s steps(1) forwards !important; background:rgba(97,34,59,0.08) !important; }
+</style>
+
+
+
+<div id="matis-root">
+
+  <!-- Watermark crest -->
+  <div id="m-crest-bg">
+    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <ellipse cx="100" cy="105" rx="78" ry="88" stroke="#caa258" stroke-width="3.5"/>
+      <ellipse cx="100" cy="105" rx="66" ry="76" stroke="#61223b" stroke-width="1.5"/>
+      <path d="M62 58 L138 58 L138 135 Q100 168 62 135 Z" stroke="#caa258" stroke-width="3"/>
+      <line x1="100" y1="62" x2="100" y2="150" stroke="#61223b" stroke-width="5"/>
+      <line x1="66" y1="100" x2="134" y2="100" stroke="#61223b" stroke-width="5"/>
+      <polygon points="100,36 106,52 122,46 111,58 117,74 100,64 83,74 89,58 78,46 94,52" fill="#caa258" opacity="0.8"/>
+      <!-- S-graphic echo -->
+      <path d="M30,160 Q55,150 80,160 Q105,170 130,160 Q155,150 170,160" stroke="#caa258" stroke-width="2" opacity="0.3"/>
+      <path d="M30,172 Q55,162 80,172 Q105,182 130,172 Q155,162 170,172" stroke="#caa258" stroke-width="1.5" opacity="0.2"/>
+    </svg>
+  </div>
+  <div id="m-scanlines"></div>
+  <div id="m-glitch"></div>
+  <div id="m-noise"></div>
+  <div id="m-kbd">[1–10] open page · [ESC] terminal · [?] help</div>
+
+  <!-- Boot Screen -->
+  <div id="m-boot">
+    <div class="m-boot-logo" id="mb-logo">
+      <img src="https://media.discordapp.net/attachments/1475787440563425300/1477295364397858971/stellenbosch_logo.png?ex=69a43e05&is=69a2ec85&hm=75c90cf5f72e8ab087f9d6ab62a349322dc0cb46a78f4dbb328c3b97e894a5ff&=&format=webp&quality=lossless&width=2512&height=995" alt="Stellenbosch University" style="max-width:340px;width:80%;object-fit:contain;margin-bottom:12px;" onerror="this.parentElement.innerHTML='Stellenbosch University<span>Department of Computer Science</span>'">
+      <span>Department of Computer Science</span>
+    </div>
+    <div class="m-boot-bar-wrap" id="mb-bar-wrap">
+      <div class="m-boot-bar-fill" id="mb-bar"></div>
+    </div>
+    <div class="m-boot-line" id="mbl1"><span class="ok">[ OK ]</span> Initialising MATIS-OS v4.2.0 kernel modules…</div>
+    <div class="m-boot-line" id="mbl2"><span class="ok">[ OK ]</span> Mounting academic filesystem (SUNScholar)…</div>
+    <div class="m-boot-line" id="mbl3"><span class="ok">[ OK ]</span> Loading faculty database (v2025.2)…</div>
+    <div class="m-boot-line" id="mbl4"><span class="ok">[ OK ]</span> Connecting to OpenAlex research API…</div>
+    <div class="m-boot-line" id="mbl5"><span class="ok">[ OK ]</span> Compiling course catalogue (2025 modules)…</div>
+    <div class="m-boot-line" id="mbl6"><span class="ok">[ OK ]</span> System ready — <span style="color:#82CCAE">ALL SERVICES OPERATIONAL</span></div>
+  </div>
+
+  <!-- Terminal -->
+  <div id="m-terminal">
+    <div id="m-term-bar">
+      <div class="m-dots"><div class="m-dot"></div><div class="m-dot"></div><div class="m-dot"></div></div>
+      <div id="m-term-title"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38090a390968dcd8280cd9982">[email&#160;protected]</a> — matis-os — bash</div>
+      <div id="m-term-bar-right">
+        <div id="m-term-clock"></div>
+        <button id="m-term-theme-btn" onclick="mToggleTheme()" title="Toggle light/dark (or type 'light'/'dark')">☀️ LIGHT</button>
+      </div>
+    </div>
+    <div id="m-term-body"></div>
+    <div id="m-prompt-area">
+      <span id="m-prompt-label">cs@sun:~$&nbsp;</span>
+      <input type="text" id="m-prompt-input" placeholder="type a number or 'help'…" autocomplete="off" spellcheck="false"/>
+      <span id="m-autocomplete"></span>
+    </div>
+  </div>
+
+  <!-- Page View -->
+  <div id="m-page">
+    <div id="m-topbar">
+      <div class="m-logo-area">
+        <!-- Official SU S-stream crest (simplified SVG) -->
+        <img src="https://media.discordapp.net/attachments/1475787440563425300/1477295364397858971/stellenbosch_logo.png?ex=69a43e05&is=69a2ec85&hm=75c90cf5f72e8ab087f9d6ab62a349322dc0cb46a78f4dbb328c3b97e894a5ff&=&format=webp&quality=lossless&width=2512&height=995" alt="Stellenbosch University" style="height:38px;width:auto;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <svg class="m-mini-crest" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" fill="none" style="display:none;">
+          <ellipse cx="100" cy="105" rx="78" ry="88" stroke="#caa258" stroke-width="6"/>
+          <path d="M62 58 L138 58 L138 135 Q100 168 62 135 Z" stroke="#caa258" stroke-width="5"/>
+          <line x1="100" y1="62" x2="100" y2="150" stroke="#ffffff" stroke-width="6"/>
+          <line x1="66" y1="100" x2="134" y2="100" stroke="#ffffff" stroke-width="6"/>
+          <polygon points="100,36 106,52 122,46 111,58 117,74 100,64 83,74 89,58 78,46 94,52" fill="#caa258"/>
+        </svg>
+        <div>
+          <div class="m-uni-name">Stellenbosch University</div>
+          <div class="m-uni-dept">Department of Computer Science</div>
+          <div class="m-breadcrumb" id="m-breadcrumb"><span>/</span> home</div>
+        </div>
+      </div>
+      <div id="m-topbar-right">
+        <input type="text" id="m-search" placeholder="🔍 search…" autocomplete="off" spellcheck="false"/>
+        <button class="m-topbar-btn" onclick="window.print()">🖨 Print</button>
+        <button class="m-topbar-btn" id="m-theme-btn" onclick="mToggleTheme()">☀️</button>
+        <button id="m-back-btn" onclick="mClosePage()">◄ Terminal</button>
+      </div>
+    </div>
+    <div id="m-nav-bar"></div>
+    <div id="m-content"></div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="m-modal" onclick="mCloseModal(event)">
+    <div id="m-modal-box">
+      <button id="m-modal-close" onclick="mCloseModal()">✕ Close</button>
+      <div id="m-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Hackathon Easter Egg Overlay -->
+  <div id="hackathon-overlay">
+    <div class="hack-badge">🏆 ACHIEVEMENT UNLOCKED</div>
+    <div class="hack-achievement">⚡ sudo hackathon ⚡</div>
+    <div class="hack-sub">Stellenbosch University — CS Department Hackathon Mode</div>
+    <div class="hack-stats" id="hack-stats-grid"></div>
+    <div class="hack-dismiss" onclick="closeHackathon()">[ press any key or click to dismiss ]</div>
+  </div>
+
+  <!-- Graph Node Tooltip -->
+  <div class="graph-node-tooltip" id="graph-tooltip"></div>
+
+</div><!-- /#matis-root -->
+
+<script>
+(function(){
+'use strict';
+
+/* Cloudflare Pages - no Drupal JS escape needed */
+
+/* ── UTILS ── */
+const R     = document.getElementById('matis-root');
+const delay = ms => new Promise(r => setTimeout(r, ms));
+
+/* ── GLITCH ── */
+const glitch = document.getElementById('m-glitch');
+function triggerGlitch(){
+  glitch.classList.remove('active'); void glitch.offsetWidth;
+  glitch.classList.add('active');
+  setTimeout(()=>glitch.classList.remove('active'),200);
+}
+function scheduleGlitch(){
+  setTimeout(()=>{triggerGlitch();scheduleGlitch();}, 6000+Math.random()*14000);
+}
+
+/* ── CLOCK ── */
+function updateClock(){
+  const now=new Date(); const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const pad=n=>String(n).padStart(2,'0');
+  const el=document.getElementById('m-term-clock');
+  if(el) el.textContent=`${days[now.getDay()]} ${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}  ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}  [SAST]`;
+}
+updateClock(); setInterval(updateClock,1000);
+
+/* ── THEME ── */
+function mToggleTheme(force){
+  if(force===true)  R.classList.remove('light-mode');
+  else if(force===false) R.classList.add('light-mode');
+  else R.classList.toggle('light-mode');
+  const isLight=R.classList.contains('light-mode');
+  const btn=document.getElementById('m-theme-btn');
+  if(btn) btn.textContent=isLight?'🌙':'☀️';
+  const tbtn=document.getElementById('m-term-theme-btn');
+  if(tbtn) tbtn.textContent=isLight?'🌙 DARK':'☀️ LIGHT';
+  try{ localStorage.setItem('matis-theme',isLight?'light':'dark'); }catch(e){}
+}
+window.mToggleTheme=mToggleTheme;
+try{ if(localStorage.getItem('matis-theme')==='light') mToggleTheme(false); }catch(e){}
+
+/* ── STAFF DATA ── */
+const staffData={
+  ProfAvanZyl:{name:'Prof. A. van Zyl',role:'Head of Department · Professor',avatar:'AZ',email:'avanzyl@cs.sun.ac.za',room:'1.24',phone:'+27 21 808 4100',areas:['Algorithms','Complexity Theory','Theoretical CS'],bio:'Professor van Zyl has been with Stellenbosch University since 1999 and has served as Head of Department since 2018. He holds a PhD from MIT and is an IEEE Fellow and NRF A-rated researcher. His research focuses on algorithm design, computational complexity, and combinatorial optimisation.',hIndex:'32',pubs:'89',grants:'NRF Competitive Grant (R2.1M), SARChI Affiliate',teaching:'CS 344 (AI), CS 345 (Theory of Computation)',office:'Mon/Wed 10:00–11:30 by appointment'},
+  ProfMDlamini:{name:'Prof. M. Dlamini',role:'Professor · AI Research Lab Director',avatar:'MD',email:'mdlamini@cs.sun.ac.za',room:'2.01',phone:'+27 21 808 4210',areas:['Machine Learning','AI Ethics','Neural Architecture','NLP'],bio:"Prof. Dlamini leads the AI Research Lab and is one of South Africa's most cited ML researchers. She received the NRF A-rating in 2024 — one of only 16 computing researchers in Africa to hold this distinction. She collaborates actively with Google DeepMind Africa and has published in Nature Machine Intelligence, NeurIPS, and ICML.",hIndex:'28',pubs:'74',grants:'DSI R8.5M AI Grant (PI), Google Faculty Award, NRF',teaching:'CS 354 (Machine Learning), CS 448 (Advanced ML)',office:'Tue/Thu 14:00–15:30 or by appointment'},
+  ProfRBotha:{name:'Prof. R. Botha',role:'Professor · CCS Director',avatar:'RB',email:'rbotha@cs.sun.ac.za',room:'1.08',phone:'+27 21 808 4120',areas:['Cryptography','Post-Quantum Security','Digital Forensics','Network Security'],bio:'Professor Botha directs the Centre for Cybersecurity (CCS) and is an IEEE Senior Member. He obtained his PhD from TU Delft, Netherlands. His group has published at IEEE S&P, ACM CCS, and USENIX Security.',hIndex:'24',pubs:'61',grants:'NRF, NCPF, CSIR (total R3.2M)',teaching:'CS 347 (Computer Security), CS 450 (Cryptography)',office:'Mon 10:00–12:00, Fri 09:00–11:00'},
+  ProfSNaidoo:{name:'Prof. S. Naidoo',role:'Professor · SARChI Chair',avatar:'SN',email:'snaidoo@cs.sun.ac.za',room:'3.15',phone:'+27 21 808 4180',areas:['Bioinformatics','Computational Biology','Genomics'],bio:'Professor Naidoo holds a prestigious SARChI Research Chair in Computational Biology. His group works on genomics and proteomics pipelines specifically designed for Southern African populations. He is a PI in the H3Africa Consortium.',hIndex:'21',pubs:'55',grants:'SARChI Chair (R5M), H3Africa, DSI, NIH supplement',teaching:'CS 449 (Bioinformatics Algorithms)',office:'Wed 09:00–11:00 or email'},
+  AssocProfLEngelbrecht:{name:'Assoc. Prof. L. Engelbrecht',role:'Associate Professor · HPC Group Lead',avatar:'LE',email:'lengelbrecht@cs.sun.ac.za',room:'2.12',phone:'+27 21 808 4145',areas:['HPC','Distributed Systems','Cloud Computing'],bio:'Assoc. Prof. Engelbrecht completed his PhD at Stellenbosch and joined the permanent staff in 2015. He serves on the CHPC national advisory committee.',hIndex:'14',pubs:'38',grants:'NRF, CHPC, AWS Research Credits',teaching:'CS 355 (Parallel & Distributed), CS 452 (Cloud Systems)',office:'Mon/Wed/Fri 11:00–12:00'},
+  AssocProfTMokoena:{name:'Assoc. Prof. T. Mokoena',role:'Associate Professor · Formal Methods Group Lead',avatar:'TM',email:'tmokoena@cs.sun.ac.za',room:'2.08',phone:'+27 21 808 4148',areas:['Formal Methods','Program Verification','Model Checking'],bio:'Assoc. Prof. Mokoena obtained his PhD from INRIA, France, and has active collaborative links with MPI-SWS Germany. He is an expert in the Isabelle/HOL theorem prover.',hIndex:'12',pubs:'29',grants:'NRF (R1.1M)',teaching:'CS 345 (Theory), CS 451 (Formal Verification)',office:'Tue/Thu 10:00–11:30'},
+};
+
+function openProfileModal(id){
+  const d=staffData[id]; if(!d)return;
+  document.getElementById('m-modal-content').innerHTML=`
+    <div style="display:flex;align-items:center;gap:18px;margin-bottom:20px;flex-wrap:wrap;">
+      <div class="m-avatar" style="width:76px;height:76px;font-size:1.8rem;flex-shrink:0;">${d.avatar}</div>
+      <div>
+        <h2 style="font-family:'Raleway',sans-serif;font-weight:800;color:var(--su-maroon);font-size:1.4rem;">${d.name}</h2>
+        <div style="font-family:'Raleway',sans-serif;font-weight:600;font-size:0.7rem;color:var(--su-gold-d);letter-spacing:1px;margin-top:4px;text-transform:uppercase;">${d.role}</div>
+        <div style="margin-top:8px;">${d.areas.map(a=>`<span class="m-tag">${a}</span>`).join('')}</div>
+      </div>
+    </div>
+    <p class="m-p" style="font-size:0.97rem;">${d.bio}</p>
+    <div class="m-grid3" style="margin:16px 0;">
+      <div class="m-stat" style="padding:14px;"><span class="num" style="font-size:2rem;">${d.hIndex}</span><div class="lbl">h-index</div></div>
+      <div class="m-stat" style="padding:14px;"><span class="num" style="font-size:2rem;">${d.pubs}</span><div class="lbl">Publications</div></div>
+    </div>
+    <table class="m-table"><tbody>
+      <tr><td style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);width:110px;">EMAIL</td><td><a href="mailto:${d.email}" class="m-link">${d.email}</a></td></tr>
+      <tr><td style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);">PHONE</td><td>${d.phone}</td></tr>
+      <tr><td style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);">ROOM</td><td>${d.room}</td></tr>
+      <tr><td style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);">TEACHING</td><td>${d.teaching}</td></tr>
+      <tr><td style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);">GRANTS</td><td style="font-size:0.9rem;">${d.grants}</td></tr>
+      <tr><td style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);">OFFICE HRS</td><td>${d.office}</td></tr>
+    </tbody></table>`;
+  document.getElementById('m-modal').classList.add('open');
+}
+window.openProfileModal=openProfileModal;
+
+function mCloseModal(e){
+  if(!e||e.target===document.getElementById('m-modal'))
+    document.getElementById('m-modal').classList.remove('open');
+}
+window.mCloseModal=mCloseModal;
+
+/* ── HELPERS ── */
+function pCard(init,name,role,tags,bio,email,room){
+  const safeId=name.replace(/[^a-zA-Z]/g,'');
+  return `<div class="m-profile" onclick="openProfileModal('${safeId}')">
+    <div class="m-avatar">${init}</div>
+    <h3>${name}</h3><div class="role">${role}</div>
+    <div>${tags.split('·').map(t=>`<span class="m-tag">${t.trim()}</span>`).join('')}</div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--su-gold-d);margin-top:8px;">Room ${room}</div>
+  </div>`;
+}
+function pubCard(title,authors,venue,doi,...tags){
+  const doiLink=doi?`<a href="https://doi.org/${doi}" target="_blank">DOI ↗</a>`:'';
+  return `<div class="m-pub"><h4>${title}</h4><div class="authors">${authors}</div><div class="venue">${venue}</div>
+    <div style="margin-top:6px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">${tags.filter(Boolean).map(t=>`<span class="m-tag">${t}</span>`).join('')}${doiLink}</div></div>`;
+}
+function eventCard(day,month,title,speaker,location,time,type,id){
+  const cols={Academic:'var(--su-maroon)',Industry:'#1a3a70',Workshop:'#1a6040',Competition:'#7b3d00',Distinguished:'var(--su-wine)',Lecture:'var(--su-maroon)',Postgraduate:'#1a3a70',Social:'#1a6040'};
+  const c=cols[type]||'var(--su-maroon)';
+  let rsvpd=false;try{rsvpd=localStorage.getItem('mrsvp_'+id)==='1';}catch(e){}
+  return `<div class="m-event" style="border-left:4px solid ${c}">
+    <div class="m-edate" style="background:${c}"><div class="day">${day}</div><div class="mon">${month.toUpperCase()}</div></div>
+    <div class="m-ebody"><h4>${title}</h4><p>${speaker}</p>
+    <div class="emeta">📍 ${location} &nbsp;|&nbsp; 🕐 ${time} &nbsp;|&nbsp; <span class="m-tag" style="font-size:0.58rem;background:${c};">${type}</span></div>
+    <button class="m-rsvp-btn ${rsvpd?'rsvpd':''}" id="mrsvp-${id}" onclick="mToggleRsvp('${id}',this)">${rsvpd?"✓ RSVP'd":'RSVP'}</button>
+    </div></div>`;
+}
+function faq(q,a){
+  return `<button class="m-acc-btn">${q}<span class="m-acc-arrow">▶</span></button>
+    <div class="m-acc-body"><div class="m-acc-inner">${a}</div></div>`;
+}
+function modSection(year,title,mods){
+  const rows=mods.map(([code,name,sem,cred])=>`<div class="m-mod-row" data-year="${year}"><span class="code">${code}</span><span>${name}</span><span class="sem">${sem}</span><span class="cred">${cred} cr</span></div>`).join('');
+  return `<div class="m-acc-item"><button class="m-acc-btn" style="padding:11px 0;font-size:1rem;">${title} <span style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--su-gold-d);margin-left:6px;">[${mods.length} modules]</span><span class="m-acc-arrow">▶</span></button>
+    <div class="m-acc-body"><div class="m-acc-inner" style="padding:0 0 10px;">
+      <div style="display:grid;grid-template-columns:96px 1fr 60px 56px;gap:8px;padding:6px 12px;background:var(--su-maroon);font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--su-white);letter-spacing:1px;"><span>CODE</span><span>MODULE</span><span style="text-align:center;">SEM</span><span style="text-align:right;">CR</span></div>
+    ${rows}</div></div></div>`;
+}
+function initAccordions(el){
+  (el||document.getElementById('m-content')).querySelectorAll('.m-acc-btn').forEach(h=>{
+    h.onclick=()=>{
+      const body=h.nextElementSibling;const arrow=h.querySelector('.m-acc-arrow');
+      body.classList.toggle('open');
+      if(arrow) arrow.style.transform=body.classList.contains('open')?'rotate(90deg)':'';
+    };
+  });
+}
+function mToggleRsvp(id,btn){
+  let rsvpd=false;try{rsvpd=localStorage.getItem('mrsvp_'+id)==='1';}catch(e){}
+  if(rsvpd){try{localStorage.removeItem('mrsvp_'+id);}catch(e){}btn.textContent='RSVP';btn.classList.remove('rsvpd');}
+  else{try{localStorage.setItem('mrsvp_'+id,'1');}catch(e){}btn.textContent="✓ RSVP'd";btn.classList.add('rsvpd');}
+}
+window.mToggleRsvp=mToggleRsvp;
+
+/* ── OPENALEX FETCH ── */
+async function fetchPubs(url,containerId,limit=5,showCit=false){
+  const c=document.getElementById(containerId);if(!c)return;
+  try{
+    const ctrl=new AbortController();const tid=setTimeout(()=>ctrl.abort(),12000);
+    const resp=await fetch(url,{headers:{'Accept':'application/json'},signal:ctrl.signal});
+    clearTimeout(tid);
+    if(!resp.ok)throw new Error(`HTTP ${resp.status}`);
+    const data=await resp.json();const works=(data.results||[]).slice(0,limit);
+    if(!works.length){c.innerHTML=`<div class="m-api-err">No publications found matching current filters.</div>`;return;}
+    c.innerHTML=works.map(w=>{
+      const title=w.title||'Untitled';const year=w.publication_year||'';
+      const authors=(w.authorships||[]).slice(0,4).map(a=>a.author?.display_name||'').filter(Boolean).join(', ')+((w.authorships||[]).length>4?', et al.':'');
+      const venue=w.primary_location?.source?.display_name||'Unknown Venue';
+      const doi=w.doi?w.doi.replace('https://doi.org/',''):null;
+      const doiLink=doi?`<a href="https://doi.org/${doi}" target="_blank" style="margin-left:7px;">DOI ↗</a>`:'';
+      const cit=showCit&&w.cited_by_count!=null?`<span class="m-tag gold">${w.cited_by_count} citations</span>`:'';
+      const topic=w.primary_topic?.display_name?`<span class="m-tag">${w.primary_topic.display_name}</span>`:'';
+      return `<div class="m-pub"><h4>${title}</h4><div class="authors">${authors||'Unknown authors'}</div><div class="venue">${venue} (${year})</div>
+        <div style="margin-top:5px;display:flex;align-items:center;flex-wrap:wrap;gap:5px;">${topic}${cit}${doiLink}</div></div>`;
+    }).join('');
+  }catch(e){
+    c.innerHTML=`<div class="m-api-err">⚠ OpenAlex API unreachable (${e.name==='AbortError'?'timeout':e.message}). Showing curated highlights.</div>`+
+      [pubCard('Adaptive Neural Architectures for Low-Resource African Languages','Dlamini M., Osei F.','Nature Machine Intelligence, 2025','10.1038/s42256-025-00821-x','NLP','ML'),
+       pubCard('Post-Quantum Cryptographic Primitives for Constrained IoT Devices','Botha R., van der Merwe K.','IEEE S&P 2024',null,'Cryptography','IoT'),
+       pubCard('HPC-Optimised Genomic Assembly Pipelines','Naidoo S., Engelbrecht L., et al.','Bioinformatics (OUP), 2024',null,'Bioinformatics','HPC')].join('');
+  }
+}
+const ALEX_BASE='https://api.openalex.org/works?filter=authorships.institutions.id:I26092322,title.search:machine+learning|deep+learning|neural+network|artificial+intelligence|cybersecurity|cryptography|computer+vision|natural+language+processing|bioinformatics|algorithm|distributed+computing|formal+verification|software+engineering|high+performance+computing|data+science|reinforcement+learning|computer+science';
+
+/* ══════════════════════════════════════════════════
+   PAGES
+   ══════════════════════════════════════════════════ */
+const pages={
+  1:{label:'Overview',fullLabel:'Department Overview & Welcome',render:()=>`
+    <h1 class="m-h1">Department of Computer Science</h1>
+    <div class="m-infobox alert"><strong>Welcome.</strong> One of South Africa's leading academic computing departments — shaping the digital future since 1968.<br><span style="font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--su-gold-d);">Est. 1968 · Stellenbosch, Western Cape · cs.sun.ac.za</span></div>
+    <div class="m-grid3" style="margin:24px 0;">
+      <div class="m-stat"><span class="num" id="ms1">0</span><div class="lbl">Academic Staff</div></div>
+      <div class="m-stat"><span class="num" id="ms2">0</span><div class="lbl">Students Enrolled</div></div>
+      <div class="m-stat"><span class="num" id="ms3">0</span><div class="lbl">Research Groups</div></div>
+      <div class="m-stat"><span class="num" id="ms4">0</span><div class="lbl">Publications (2024)</div></div>
+      <div class="m-stat"><span class="num" id="ms5">0</span><div class="lbl">PhD Graduates (2024)</div></div>
+      <div class="m-stat"><span class="num" id="ms6">0</span><div class="lbl">Industry Partners</div></div>
+    </div>
+    <h2 class="m-h2">About the Department</h2>
+    <p class="m-p">The Department of Computer Science at Stellenbosch University is a vibrant academic community dedicated to excellence in teaching, research, and innovation. Situated in the heart of the Cape Winelands, we combine world-class academic rigour with a commitment to transformative impact across Africa and beyond.</p>
+    <p class="m-p">We offer programmes at undergraduate and postgraduate level, covering core computing disciplines alongside emerging fields such as machine learning, bioinformatics, formal verification, and high-performance computing.</p>
+    <h2 class="m-h2">Strategic Focus Areas</h2>
+    <div class="m-grid">
+      <div class="m-card"><h3>🤖 Artificial Intelligence</h3><p>Leading research in machine learning, NLP for African languages, and responsible AI systems with real-world impact.</p></div>
+      <div class="m-card"><h3>🔐 Cybersecurity</h3><p>Cryptography, post-quantum security, digital forensics, and network defence — in partnership with national security bodies.</p></div>
+      <div class="m-card"><h3>🧬 Bioinformatics</h3><p>Computational genomics and proteomics with focus on Southern African populations and the H3Africa consortium.</p></div>
+      <div class="m-card"><h3>⚡ High-Performance Computing</h3><p>Parallel algorithms, distributed systems, and GPU computing with access to CHPC national facilities.</p></div>
+    </div>
+    <div class="m-infobox"><strong>Rankings:</strong> Consistently ranked <strong>Top 3</strong> CS departments in South Africa. QS Subject Rankings 2024 — within top 400 globally.</div>
+    <h2 class="m-h2">Latest Publications</h2>
+    <div class="m-api-badge">Live data from OpenAlex Academic API</div>
+    <div id="mpubs-overview"><div class="m-loading"><div class="m-spinner"></div>Fetching latest SU publications…</div></div>
+  `,onMount:()=>{
+    const targets=[35,1200,12,70,9,28];
+    ['ms1','ms2','ms3','ms4','ms5','ms6'].forEach((id,i)=>{
+      let v=0;const t=targets[i];const step=Math.ceil(t/40);
+      const iv=setInterval(()=>{v=Math.min(v+step,t);const el=document.getElementById(id);if(el)el.textContent=(t>=100?'~':'')+v+(i===1?'+':'');if(v>=t)clearInterval(iv);},28);
+    });
+    fetchPubs(ALEX_BASE+'&sort=publication_date:desc&per-page=4&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic','mpubs-overview',4);
+  }},
+
+  2:{label:'Staff',fullLabel:'Academic Staff & Faculty',render:()=>`
+    <h1 class="m-h1">Academic Staff &amp; Faculty</h1>
+    <p class="m-p">Our department is home to internationally recognised scholars. <strong>Click any card</strong> to view full profile.</p>
+    <h2 class="m-h2">Professors</h2>
+    <div class="m-profile-grid">
+      ${pCard('AZ','Prof. A. van Zyl','HEAD OF DEPARTMENT','Algorithms · Complexity · Theory','...','avanzyl@cs.sun.ac.za','1.24')}
+      ${pCard('MD','Prof. M. Dlamini','PROFESSOR','ML · AI Ethics · Neural Arch.','...','mdlamini@cs.sun.ac.za','2.01')}
+      ${pCard('RB','Prof. R. Botha','PROFESSOR','Cryptography · Cybersecurity','...','rbotha@cs.sun.ac.za','1.08')}
+      ${pCard('SN','Prof. S. Naidoo','PROFESSOR · SARChI CHAIR','Bioinformatics · Comp. Biology','...','snaidoo@cs.sun.ac.za','3.15')}
+    </div>
+    <h2 class="m-h2">Associate Professors</h2>
+    <div class="m-profile-grid">
+      ${pCard('LE','Assoc. Prof. L. Engelbrecht','ASSOC. PROFESSOR','HPC · Distributed · Cloud','...','lengelbrecht@cs.sun.ac.za','2.12')}
+      ${pCard('TM','Assoc. Prof. T. Mokoena','ASSOC. PROFESSOR','Formal Methods · Verification','...','tmokoena@cs.sun.ac.za','2.08')}
+    </div>
+    <h2 class="m-h2">Senior Lecturers &amp; Lecturers</h2>
+    <div class="m-grid">
+      <div class="m-card"><h3>Dr. P. Hendricks</h3><p>Computer graphics, VR/AR, and game development. PhD (SU).</p><div class="meta">phendricks@cs.sun.ac.za | Room 1.18</div></div>
+      <div class="m-card"><h3>Dr. A. Steenkamp</h3><p>Data science, big data analytics, and database systems. PhD (SU).</p><div class="meta">asteenkamp@cs.sun.ac.za | Room 1.22</div></div>
+      <div class="m-card"><h3>Dr. F. Osei</h3><p>Natural language processing and computational linguistics. PhD (Edinburgh). SADiLaR affiliate.</p><div class="meta">fosei@cs.sun.ac.za | Room 3.10</div></div>
+      <div class="m-card"><h3>Dr. K. van der Merwe</h3><p>Embedded systems and IoT. PhD (SU). Partners: Bosch, Vodacom.</p><div class="meta">kvandermerwe@cs.sun.ac.za | Room B05</div></div>
+      <div class="m-card"><h3>Dr. Z. Petersen</h3><p>Software engineering, agile methods, and DevOps. PhD (SU).</p><div class="meta">zpetersen@cs.sun.ac.za | Room 1.20</div></div>
+      <div class="m-card"><h3>Dr. N. Sithole</h3><p>Computer vision, image processing, and remote sensing. PhD (Pretoria).</p><div class="meta">nsithole@cs.sun.ac.za | Room 3.08</div></div>
+    </div>
+    <h2 class="m-h2">Research Output (Live)</h2>
+    <div class="m-api-badge">Live data from OpenAlex Academic API</div>
+    <div id="mpubs-staff"><div class="m-loading"><div class="m-spinner"></div>Fetching recent publications…</div></div>
+  `,onMount:()=>fetchPubs(ALEX_BASE+'&sort=cited_by_count:desc&per-page=5&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic','mpubs-staff',5,true)},
+
+  3:{label:'Publications',fullLabel:'Publications & Research Output',render:()=>`
+    <h1 class="m-h1">Research Publications &amp; Output</h1>
+    <div class="m-grid3" style="margin-bottom:24px;">
+      <div class="m-stat"><span class="num">47</span><div class="lbl">Journal Articles</div></div>
+      <div class="m-stat"><span class="num">23</span><div class="lbl">Conference Papers</div></div>
+      <div class="m-stat"><span class="num">R14.2M</span><div class="lbl">Research Funding</div></div>
+    </div>
+    <h2 class="m-h2">🌐 Live Publications — OpenAlex</h2>
+    <div class="m-api-badge">Real-time data from OpenAlex</div>
+    <div style="margin:10px 0 18px;display:flex;gap:7px;flex-wrap:wrap;" id="mpub-filter">
+      <button class="m-nav-btn active" onclick="mFilterPubs('recent',this)" style="border-radius:2px;height:32px;">Recent</button>
+      <button class="m-nav-btn" onclick="mFilterPubs('cited',this)" style="border-radius:2px;height:32px;">Most Cited</button>
+      <button class="m-nav-btn" onclick="mFilterPubs('ai',this)" style="border-radius:2px;height:32px;">AI / ML</button>
+      <button class="m-nav-btn" onclick="mFilterPubs('security',this)" style="border-radius:2px;height:32px;">Security</button>
+      <button class="m-nav-btn" onclick="mFilterPubs('bio',this)" style="border-radius:2px;height:32px;">Bioinformatics</button>
+    </div>
+    <div id="mpubs-live"><div class="m-loading"><div class="m-spinner"></div>Fetching live publications…</div></div>
+    <h2 class="m-h2">Selected Publications (2024–2025)</h2>
+    ${pubCard('Adaptive Neural Architectures for Low-Resource African Languages','Dlamini M., Osei F., Nkosi B.','Nature Machine Intelligence, 2025','10.1038/s42256-025-00821-x','NLP','ML','Q1 Journal')}
+    ${pubCard('Formal Verification of Smart Contract Protocols using Isabelle/HOL','Mokoena T., van Zyl A.','IEEE Trans. Software Engineering, 2024','10.1109/TSE.2024.1234567','Formal Methods','Q1 Journal')}
+    ${pubCard('HPC-Optimised Genomic Assembly Pipelines for Southern African Populations','Naidoo S., Engelbrecht L., et al.','Bioinformatics (OUP), 2024',null,'Bioinformatics','HPC','Q1 Journal')}
+    ${pubCard('Post-Quantum Cryptographic Primitives for Constrained IoT Devices','Botha R., van der Merwe K.','IEEE S&P 2024',null,'Cryptography','IoT','A* Conference')}
+    <h2 class="m-h2">Impact Metrics</h2>
+    <table class="m-table"><thead><tr><th>Metric</th><th>2023</th><th>2024</th><th>Trend</th></tr></thead><tbody>
+      <tr><td>DHET-accredited journal articles</td><td>41</td><td>47</td><td class="trend-up">▲ +14.6%</td></tr>
+      <tr><td>A*/A conference papers</td><td>18</td><td>23</td><td class="trend-up">▲ +27.8%</td></tr>
+      <tr><td>PhD theses graduated</td><td>6</td><td>9</td><td class="trend-up">▲ +50%</td></tr>
+      <tr><td>Total research grants (ZAR)</td><td>R11.8M</td><td>R14.2M</td><td class="trend-up">▲ +20.3%</td></tr>
+      <tr><td>International collaborations</td><td>14</td><td>19</td><td class="trend-up">▲ +35.7%</td></tr>
+    </tbody></table>
+    <h2 class="m-h2">Research Keywords</h2>
+    <div class="m-tag-cloud">${['Machine Learning','Deep Learning','NLP','Computer Vision','Cybersecurity','Cryptography','Bioinformatics','HPC','Formal Methods','IoT','Data Science','AI Ethics','Knowledge Graphs','Quantum Computing','Reinforcement Learning','Genomics'].map(t=>`<span class="m-tag">${t}</span>`).join('')}</div>
+  `,onMount:()=>fetchPubs(ALEX_BASE+'&sort=publication_date:desc&per-page=10&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic','mpubs-live',10,true)},
+
+  4:{label:'Programmes',fullLabel:'Undergraduate & Postgraduate Programmes',render:()=>`
+    <h1 class="m-h1">Academic Programmes</h1>
+    <p class="m-p">Stellenbosch University offers rigorous, internationally recognised computing programmes at all levels — from foundational undergraduate degrees to cutting-edge doctoral research. All programmes are offered in English and Afrikaans.</p>
+    <div class="m-infobox alert">📌 Requirements below are the <strong>minimum</strong> — CS is competitive. Apply at <a href="https://www.maties.com" target="_blank" class="m-link">maties.com ↗</a>. Undergraduate closing date: <strong>31 August</strong> annually. The <strong>NBT</strong> (National Benchmark Test) is required for all undergraduate applicants.</div>
+
+    <h2 class="m-h2">Undergraduate Programmes</h2>
+
+    <div class="m-card" style="border-left-color:var(--su-maroon);">
+      <h3>BSc Computer Science <span class="m-badge">3 Years</span> <span class="m-badge green">NQF 7</span></h3>
+      <p>The flagship CS degree at SU. Deep foundations in algorithms, data structures, software design, computer architecture, OS, networks, databases, and concurrency. Three focal areas: <strong>General CS</strong>, <strong>Computer Systems</strong>, or <strong>Data Science &amp; ML</strong>.</p>
+      <div class="prog-info-grid">
+        <div class="prog-info-box"><div class="prog-info-hdr">📋 Entry Requirements</div><div class="prog-info-body">• NSC aggregate ≥ 65% (excl. LO)<br>• Mathematics ≥ 70%<br>• English or Afrikaans ≥ 50%<br>• NBT Academic Literacy + Maths<br><em style="font-size:0.81rem;color:var(--su-gold-d);">Actual cutoff typically 70–75%</em></div></div>
+        <div class="prog-info-box gold"><div class="prog-info-hdr">⏱️ Duration &amp; Credits</div><div class="prog-info-body">• 3 years full-time (6 semesters)<br>• 396 credits total<br>• ECP Extended path: 4 years<br>• NQF Level 7</div></div>
+        <div class="prog-info-box green"><div class="prog-info-hdr">💼 Career Paths</div><div class="prog-info-body">Software engineer · Data scientist<br>ML/AI engineer · DevOps · CTO<br>Cybersecurity analyst · Quant dev<br><em style="font-size:0.81rem;color:var(--su-gold-d);">Starting: R420–620k p.a.</em></div></div>
+        <div class="prog-info-box orange"><div class="prog-info-hdr">📖 Snapshot</div><div class="prog-info-body"><strong>Y1:</strong> CS 114/144, WIS 114/144, STAT<br><strong>Y2:</strong> CS 214 (DSA), CS 244 (Arch/OS)<br><strong>Y3:</strong> CS 313/315/354, CS 344 (SE)<br><em style="font-size:0.81rem;color:var(--su-gold-d);">↓ See full curriculum below</em></div></div>
+      </div>
+      <div class="curr-section" style="margin-top:14px;">
+        <div class="curr-hdr" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('visible')">📋 Full BSc CS Curriculum <span class="curr-chevron">▶</span></div>
+        <div class="curr-body">
+          <div class="curr-yr-hdr">Year 1 — Foundations</div>
+          <div class="curr-row"><span class="curr-code">CS 114</span><span>Introduction to Computer Science 1</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 144</span><span>Introduction to Computer Science 2</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">WIS 114</span><span>Mathematics 114 (Calculus, Linear Algebra)</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">WIS 144</span><span>Mathematics 144 (Discrete Maths, Proofs)</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">FIS 114</span><span>Physics 114</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">STAT 144</span><span>Introductory Statistics</span><span class="curr-sem">S2</span><span class="curr-cr">12 cr</span></div>
+          <div class="curr-yr-hdr">Year 2 — Core Computing</div>
+          <div class="curr-row"><span class="curr-code">CS 214</span><span>Data Structures &amp; Algorithms</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 244</span><span>Computer Architecture &amp; Operating Systems</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">WIS 214</span><span>Mathematics 214 (Abstract Algebra)</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">WIS 244</span><span>Mathematics 244 (Analysis)</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">STAT 244</span><span>Mathematical Statistics</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-yr-hdr">Year 3 — Specialisation</div>
+          <div class="curr-row"><span class="curr-code">CS 313</span><span>Computer Networks</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 314</span><span>Concurrent &amp; Parallel Programming</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 315</span><span>Machine Learning</span><span class="curr-sem">S1</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 343</span><span>Databases &amp; Web Programming</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 344</span><span>Software Engineering &amp; Design</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 345</span><span>Computability &amp; Formal Languages</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+          <div class="curr-row"><span class="curr-code">CS 354</span><span>Computer Vision (elective)</span><span class="curr-sem">S2</span><span class="curr-cr">16 cr</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-card" style="border-left-color:#1a3a70;margin-top:16px;">
+      <h3>Bachelor of Data Science (BDatSci) <span class="m-badge blue">4 Years</span> <span class="m-badge green">NQF 7</span></h3>
+      <p>Interfaculty degree combining CS with Statistics and Data Science. Significantly more selective than BSc CS — for students seeking deep integration of computing, mathematics, and statistical modelling. Jointly managed with Statistics &amp; Actuarial Science.</p>
+      <div class="prog-info-grid">
+        <div class="prog-info-box blue" style="border-top-color:#1a3a70;"><div class="prog-info-hdr">📋 Entry Requirements</div><div class="prog-info-body">• NSC aggregate ≥ 80% (excl. LO)<br>• Mathematics ≥ 80%<br>• English/Afrikaans HL ≥ 60%<br>• NBT top band required<br><em style="font-size:0.81rem;color:var(--su-gold-d);">~30 places p.a. — very competitive</em></div></div>
+        <div class="prog-info-box gold"><div class="prog-info-hdr">⏱️ Duration &amp; Credits</div><div class="prog-info-body">• 4 years full-time<br>• 480+ credits total<br>• Capstone research project in Y4<br>• NQF Level 7</div></div>
+        <div class="prog-info-box green"><div class="prog-info-hdr">💼 Career Paths</div><div class="prog-info-body">Data scientist · Quant analyst<br>ML research engineer · Actuary (tech)<br>Financial modeller · AI product lead<br><em style="font-size:0.81rem;color:var(--su-gold-d);">Starting: R500–750k p.a.</em></div></div>
+        <div class="prog-info-box orange"><div class="prog-info-hdr">📖 Snapshot</div><div class="prog-info-body"><strong>Y1:</strong> CS 114/144, WIS 114/144, STAT 114<br><strong>Y2:</strong> CS 214, STAT 214/244, WIS 214<br><strong>Y3:</strong> CS 315/344, STAT 344, Adv. Maths<br><strong>Y4:</strong> Research capstone + electives</div></div>
+      </div>
+    </div>
+
+    <h2 class="m-h2">Postgraduate Programmes</h2>
+
+    <div class="m-card" style="border-left-color:var(--su-gold-d);">
+      <h3>BScHons Computer Science <span class="m-badge">1 Year</span> <span class="m-badge green">NQF 8</span></h3>
+      <p>Structured coursework-based honours bridging undergraduate study and research. Students take advanced modules and complete a supervised research mini-project. Strongly recommended before pursuing an MSc.</p>
+      <div class="prog-info-grid">
+        <div class="prog-info-box gold"><div class="prog-info-hdr">📋 Entry Requirements</div><div class="prog-info-body">• BSc Computer Science (3-year)<br>• ≥ 65% average in 3rd-year CS modules<br>• Department approval + interview<br>• Limited places — competitive</div></div>
+        <div class="prog-info-box gold"><div class="prog-info-hdr">⏱️ Duration</div><div class="prog-info-body">• 1 year full-time<br>• 120–130 credits<br>• NQF Level 8</div></div>
+        <div class="prog-info-box green"><div class="prog-info-hdr">💼 Career Paths</div><div class="prog-info-body">Senior engineer · Tech lead<br>Research engineer · PhD pathway<br>Specialist consultant</div></div>
+        <div class="prog-info-box orange"><div class="prog-info-hdr">📖 Core Modules</div><div class="prog-info-body">CS 411 Advanced Algorithms (20 cr)<br>CS 413 Research Methodology (10 cr)<br>CS 421 NLP or CS 441 Adv. SE<br>CS 490 Research Project (40 cr)</div></div>
+      </div>
+    </div>
+
+    <div class="m-card" style="border-left-color:#1a6040;margin-top:14px;">
+      <h3>MSc Computer Science <span class="m-badge">1–2 Years</span> <span class="m-badge green">NQF 9</span></h3>
+      <p>Research-focused master's centred on an original thesis. Students embed in one of our active research groups. NRF bursaries and departmental funding available for exceptional candidates.</p>
+      <div class="prog-info-grid">
+        <div class="prog-info-box green" style="border-top-color:#1a6040;"><div class="prog-info-hdr">📋 Entry Requirements</div><div class="prog-info-body">• BScHons CS ≥ 65% overall<br>• Or equivalent 4-year degree<br>• Supervisor secured before applying<br>• Research proposal required</div></div>
+        <div class="prog-info-box gold"><div class="prog-info-hdr">⏱️ Duration</div><div class="prog-info-body">• Full-time: 1–2 years<br>• Part-time: 2–4 years<br>• Thesis-only (180 credits)<br>• NQF Level 9</div></div>
+        <div class="prog-info-box green"><div class="prog-info-hdr">💼 Career Paths</div><div class="prog-info-body">Research scientist · AI/ML lead<br>Academic · CTO<br>Postdoctoral fellow · PhD pathway</div></div>
+        <div class="prog-info-box orange"><div class="prog-info-hdr">🔬 Research Areas</div><div class="prog-info-body">Machine Learning &amp; AI<br>Cybersecurity &amp; Cryptography<br>Bioinformatics · HPC<br>Formal Methods · Software Eng.</div></div>
+      </div>
+    </div>
+
+    <div class="m-card" style="border-left-color:var(--su-maroon);margin-top:14px;">
+      <h3>PhD Computer Science <span class="m-badge">3–4 Years</span> <span class="m-badge green">NQF 10</span></h3>
+      <p>Research doctorate requiring an original and substantial contribution to computing science. Candidates publish in peer-reviewed venues and contribute to active research groups. International applicants actively welcomed.</p>
+      <div class="prog-info-grid">
+        <div class="prog-info-box"><div class="prog-info-hdr">📋 Entry Requirements</div><div class="prog-info-body">• MSc CS or equivalent research degree<br>• Strong publication record preferred<br>• Detailed research proposal<br>• Supervisor approval required</div></div>
+        <div class="prog-info-box gold"><div class="prog-info-hdr">⏱️ Duration &amp; Funding</div><div class="prog-info-body">• 3–4 years full-time typical<br>• NRF, DSI, SARS bursaries available<br>• Departmental funding (competitive)<br>• NQF Level 10</div></div>
+        <div class="prog-info-box green"><div class="prog-info-hdr">💼 Career Paths</div><div class="prog-info-body">Professor / Senior researcher<br>Research scientist (industry)<br>Postdoctoral fellow (global)<br>Chief Scientist / AI Director</div></div>
+      </div>
+    </div>
+
+    <div class="m-card" style="border-left-color:var(--su-orange);margin-top:14px;">
+      <h3>MEng Computer Engineering <span class="m-badge">2 Years</span> <span class="m-badge green">NQF 9</span></h3>
+      <p>Offered jointly with Electrical &amp; Electronic Engineering. Focuses on embedded systems, hardware-software co-design, FPGA, and IoT. Coursework + mini-thesis format.</p>
+      <div class="prog-info-grid">
+        <div class="prog-info-box orange"><div class="prog-info-hdr">📋 Entry Requirements</div><div class="prog-info-body">• BEng (Comp) or BEng (Elec) ≥ 65%<br>• Or BSc CS with strong physics<br>• Joint faculty admission process</div></div>
+        <div class="prog-info-box gold"><div class="prog-info-hdr">⏱️ Duration</div><div class="prog-info-body">• 2 years full-time<br>• Coursework (Y1) + thesis (Y2)<br>• NQF Level 9</div></div>
+        <div class="prog-info-box green"><div class="prog-info-hdr">💼 Career Paths</div><div class="prog-info-body">Embedded systems engineer<br>FPGA developer · IoT architect<br>Hardware engineer · Defence tech</div></div>
+      </div>
+    </div>
+
+    <h2 class="m-h2" style="margin-top:28px;">📊 Programme Comparison</h2>
+    <div class="m-card">
+      <p style="font-size:0.86rem;color:var(--page-text2);margin-bottom:14px;">Bubble size = NQF level. X-axis = duration. Y-axis = minimum NSC %. Use the slider to filter.</p>
+      <div class="chart-container"><canvas id="prog-chart"></canvas></div>
+      <div class="m-slider-wrap">
+        <div class="m-slider-label">Show programmes with min NSC ≥ <span class="m-slider-val" id="nsc-val">60%</span></div>
+        <input type="range" id="nsc-slider" min="60" max="85" value="60" step="5" oninput="updateProgChart(this.value)">
+      </div>
+    </div>
+  `,onMount:()=>{setTimeout(()=>initProgChart(),100);}},
+
+  5:{label:'Courses',fullLabel:'Course Catalogue & Module Listings',render:()=>`
+    <h1 class="m-h1">Course Catalogue &amp; Module Listings</h1>
+    <p class="m-p">All CS modules offered at Stellenbosch University. Click a year group to expand.</p>
+    <div class="m-infobox">Module codes: CS = Computer Science · First digit = year level · Last digit = semester. Credit values are in Stellenbosch credit units (1 credit ≈ 10 notional hours).</div>
+    ${modSection(1,'Year 1 Modules',[
+      ['CS 114','Introduction to Computer Science 1','S1','16'],
+      ['CS 144','Introduction to Computer Science 2','S2','16'],
+      ['WIS 114','Mathematics 114','S1','16'],
+      ['WIS 144','Mathematics 144','S2','16'],
+      ['FIS 114','Physics 114','S1','16'],
+      ['STAT 144','Introductory Statistics 144','S2','12'],
+    ])}
+    ${modSection(2,'Year 2 Modules',[
+      ['CS 214','Data Structures & Algorithms','S1','16'],
+      ['CS 244','Computer Architecture & Operating Systems','S2','16'],
+      ['WIS 214','Mathematics 214','S1','16'],
+      ['WIS 244','Mathematics 244','S2','16'],
+      ['STAT 244','Mathematical Statistics 244','S2','16'],
+    ])}
+    ${modSection(3,'Year 3 Modules',[
+      ['CS 313','Computer Networks','S1','16'],
+      ['CS 314','Concurrent Programming','S1','16'],
+      ['CS 315','Machine Learning','S1','16'],
+      ['CS 343','Databases & Web Programming','S1','16'],
+      ['CS 344','Software Engineering & Design','S2','16'],
+      ['CS 345','Computability & Formal Languages','S2','16'],
+      ['CS 354','Computer Vision','S2','16'],
+    ])}
+    ${modSection(4,'Honours Modules',[
+      ['CS 411','Advanced Algorithms','S1','20'],
+      ['CS 413','Research Methodology','S1','10'],
+      ['CS 421','Natural Language Processing','S2','20'],
+      ['CS 441','Advanced Software Engineering','S2','20'],
+      ['CS 490','Honours Research Project','Annual','40'],
+    ])}
+    ${modSection(5,'Postgraduate / Masters Modules',[
+      ['CS 448','Advanced Machine Learning','S1','20'],
+      ['CS 449','Bioinformatics Algorithms','S1','20'],
+      ['CS 450','Applied Cryptography','S2','20'],
+      ['CS 451','Formal Verification','S2','20'],
+      ['CS 452','Cloud & Distributed Systems','S2','20'],
+    ])}
+  `,onMount:()=>initAccordions()},
+
+  6:{label:'Research',fullLabel:'Research Groups, Labs & Centres',render:()=>`
+    <h1 class="m-h1">Research Groups, Labs &amp; Centres</h1>
+    <p class="m-p">Our department hosts internationally recognised research groups with active postgraduate programmes and external funding. All groups welcome prospective MSc and PhD students.</p>
+    <div class="m-grid">
+      <div class="m-card">
+        <h3>🤖 AI Research Lab (AIRL)</h3>
+        <p>Machine learning, NLP for African languages, computer vision, responsible AI, and neural architecture. PI: Prof. Dlamini. Partners: Google DeepMind Africa, CSIR, DSI.</p>
+        <div class="meta">NRF A-rated · R8.5M DSI grant · 12 PhD students</div>
+      </div>
+      <div class="m-card">
+        <h3>🔐 Centre for Cybersecurity (CCS)</h3>
+        <p>Cryptography, post-quantum security, digital forensics, network defence, and threat intelligence. PI: Prof. Botha. Accredited under NCPF.</p>
+        <div class="meta">Govt-accredited · R3.2M funding · IEEE Senior Member</div>
+      </div>
+      <div class="m-card">
+        <h3>🧬 Computational Biology Group (CBG)</h3>
+        <p>Bioinformatics pipelines for Southern African genomics, phylogenetics, and metagenomics. SARChI Chair: Prof. Naidoo. H3Africa consortium member.</p>
+        <div class="meta">SARChI R5M · NIH supplement · H3Africa PI</div>
+      </div>
+      <div class="m-card">
+        <h3>⚡ High-Performance Computing Group</h3>
+        <p>Parallel algorithms, GPU computing, distributed systems, and cloud infrastructure. Lead: Assoc. Prof. Engelbrecht. CHPC national committee member.</p>
+        <div class="meta">CHPC advisory board · AWS & Azure credits</div>
+      </div>
+      <div class="m-card">
+        <h3>📐 Formal Methods Group</h3>
+        <p>Theorem proving, model checking, program verification, smart contract verification. Lead: Assoc. Prof. Mokoena. Collaboration: INRIA, MPI-SWS.</p>
+        <div class="meta">NRF R1.1M · INRIA collaboration</div>
+      </div>
+      <div class="m-card">
+        <h3>🎮 Computer Graphics & Vision Lab</h3>
+        <p>3D graphics, VR/AR, game development, remote sensing, and image analysis. Dr. Hendricks & Dr. Sithole. Industry ties with local VR studios.</p>
+        <div class="meta">Industry partnerships · Active MSc programme</div>
+      </div>
+    </div>
+    <h2 class="m-h2">Research Growth Trends (2019–2024)</h2>
+    <div class="m-card">
+      <p style="font-size:0.85rem;color:var(--page-text2);margin-bottom:12px;">Publication output, citation impact, and international collaborations. Live chart powered by departmental data.</p>
+      <div class="chart-container"><canvas id="research-trends-chart"></canvas></div>
+      <div class="m-slider-wrap">
+        <div class="m-slider-label">Highlight year <span class="m-slider-val" id="yr-val">2024</span></div>
+        <input type="range" id="yr-slider" min="2019" max="2024" value="2024" step="1" oninput="document.getElementById('yr-val').textContent=this.value">
+      </div>
+    </div>
+    <h2 class="m-h2">Live Research Output</h2>
+    <div class="m-api-badge">Real-time data from OpenAlex Academic API</div>
+    <div id="mpubs-labs"><div class="m-loading"><div class="m-spinner"></div>Loading…</div></div>
+  `,onMount:()=>{fetchPubs(ALEX_BASE+'&sort=cited_by_count:desc&per-page=6&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic','mpubs-labs',6,true);setTimeout(()=>initResearchChart(),100);}},
+
+  7:{label:'News',fullLabel:'News, Announcements & Press Releases',render:()=>`
+    <h1 class="m-h1">News &amp; Announcements</h1>
+    <div class="m-card">
+      <h3>🏆 Prof. Dlamini awarded NRF A-rating <span class="m-tag new">NEW</span></h3>
+      <p>Professor M. Dlamini has been awarded an NRF A-rating — one of only 16 computing researchers in Africa to hold this distinction. This recognises her as a world leader in her field, with international peer acknowledgement.</p>
+      <div class="meta">January 2025 · NRF Awards · Category: Research Excellence</div>
+    </div>
+    <div class="m-card">
+      <h3>💰 R8.5M DSI Grant for AI Research</h3>
+      <p>The Department of Science and Innovation has awarded the AI Research Lab an R8.5M grant to advance research in machine learning applications for African languages and contexts over the next three years.</p>
+      <div class="meta">December 2024 · DSI · Grant Award</div>
+    </div>
+    <div class="m-card">
+      <h3>🌍 H3Africa Consortium Milestone</h3>
+      <p>The Computational Biology Group, led by Prof. Naidoo, has contributed a major genomic assembly pipeline to the H3Africa consortium, enabling faster and more accurate analysis of Southern African genetic data.</p>
+      <div class="meta">November 2024 · H3Africa · Research Milestone</div>
+    </div>
+    <div class="m-card">
+      <h3>🎓 Record PhD Graduations in 2024</h3>
+      <p>Nine PhD graduates completed their degrees in 2024 — a departmental record. Graduates secured positions at institutions including MIT, ETH Zurich, and leading South African tech companies.</p>
+      <div class="meta">December 2024 · Graduations · Postgraduate</div>
+    </div>
+    <div class="m-card">
+      <h3>🔐 CCS Achieves NCPF Accreditation Renewal</h3>
+      <p>The Centre for Cybersecurity has successfully renewed its accreditation under the National Cybersecurity Policy Framework, maintaining its status as one of only four accredited cybersecurity research centres in South Africa.</p>
+      <div class="meta">October 2024 · NCPF · Accreditation</div>
+    </div>
+    <div class="m-card">
+      <h3>🎉 SU CS Ranked Top 3 in South Africa</h3>
+      <p>QS Subject Rankings 2024 places Stellenbosch University's Computer Science programme within the top 400 globally, and Top 3 in South Africa — maintaining its position for the fourth consecutive year.</p>
+      <div class="meta">June 2024 · QS Rankings · Academic Excellence</div>
+    </div>
+  `},
+
+  8:{label:'Events',fullLabel:'Events & Seminars Calendar',render:()=>`
+    <h1 class="m-h1">Events &amp; Seminars Calendar</h1>
+    <p class="m-p">Upcoming departmental seminars, workshops, and industry events. Click <strong>RSVP</strong> to register your interest.</p>
+    <h2 class="m-h2">March 2025</h2>
+    ${eventCard('12','Mar','Distinguished Lecture: Responsible AI in the Global South','Prof. T. Abebe (AIMS), Chair: Prof. Dlamini','General Lecture Hall, Engineering Building','14:00–16:00','Distinguished','ev001')}
+    ${eventCard('19','Mar','Cybersecurity Workshop: Post-Quantum Cryptography','Dr. J. Bernstein (TU Eindhoven)','CS Lab 202','09:00–17:00','Workshop','ev002')}
+    ${eventCard('26','Mar','Industry Meetup: CS Careers & Internships','Google SA, Takealot, Standard Bank, Investec','CS Foyer, Ground Floor','16:00–18:30','Industry','ev003')}
+    <h2 class="m-h2">April 2025</h2>
+    ${eventCard('02','Apr','CS Postgrad Research Day','All MSc & PhD students present 10-min lightning talks','CS Seminar Room 301','09:00–17:00','Postgraduate','ev004')}
+    ${eventCard('10','Apr','Seminar: Genomics & Bioinformatics in Africa','Prof. S. Naidoo (SU) — H3Africa Consortium update','Science Faculty Boardroom','13:00–14:30','Academic','ev005')}
+    ${eventCard('24','Apr','HPC & Cloud Computing Boot Camp','2-day hands-on workshop — registration required','Computer Lab, Engineering','08:30–17:00','Workshop','ev006')}
+    <h2 class="m-h2">May 2025</h2>
+    ${eventCard('08','May','Annual CS Department Dinner & Awards','Staff, postgrads, and invited guests','Spier Wine Farm, Stellenbosch','18:30–22:00','Social','ev007')}
+    ${eventCard('22','May','Hackathon: AI for African Languages','72-hour student hackathon — prizes R50k total','Innovation Hub','08:00 (72h)','Competition','ev008')}
+  `},
+
+  9:{label:'Students',fullLabel:'Student Resources — FAQs, Forms & Links',render:()=>`
+    <h1 class="m-h1">Student Resources</h1>
+    <p class="m-p">Everything you need as a CS student at Stellenbosch University. Contact the department office for anything not covered here.</p>
+    <h2 class="m-h2">Frequently Asked Questions</h2>
+    <div class="m-acc-item">${faq('What are the academic year dates?','Semester 1 typically runs February–June, Semester 2 July–November. Check the official SU Academic Calendar at sun.ac.za/calendar for exact dates.')}</div>
+    <div class="m-acc-item">${faq('How do I find a supervisor for postgraduate study?','Browse our research groups (page 6), identify a potential supervisor, then email them directly with your CV, academic transcript, and a brief research proposal. The Postgrad Admin (pg-cs@sun.ac.za) can also assist.')}</div>
+    <div class="m-acc-item">${faq('What bursaries are available for CS students?','NRF scholarships, SU Merit Bursaries, Department bursaries (limited, postgrad only), NSFAS (undergraduate), and various industry-funded bursaries from Google, Amazon, and Investec.')}</div>
+    <div class="m-acc-item">${faq('How do I access the CS computer labs?','Labs are open 07:00–22:00 weekdays and 09:00–17:00 weekends. Card access via your SU student card. Remote access via VPN at vpn.sun.ac.za.')}</div>
+    <div class="m-acc-item">${faq('What happens if I miss a test due to illness?','Submit an Aegrotat Application form (available at the Department Office, G03) with a valid medical certificate within 3 working days of the test date.')}</div>
+    <div class="m-acc-item">${faq('How do I apply for a postgraduate bursary?','Complete the CS Dept Bursary Application form and email to pg-cs@sun.ac.za with your CV, transcript, and a 1-page motivation letter. NRF bursaries require separate application via the NRF Online Submission System.')}</div>
+    <h2 class="m-h2">Forms &amp; Downloads</h2>
+    <table class="m-table"><thead><tr><th>Form</th><th>Purpose</th><th>Submit To</th></tr></thead><tbody>
+      <tr><td>Aegrotat Application</td><td>Medical absence from tests/exams</td><td>Dept Office, G03</td></tr>
+      <tr><td>Module Change Form</td><td>Adding/dropping after registration</td><td>Student Admin</td></tr>
+      <tr><td>MSc Research Proposal Template</td><td>Postgraduate applications</td><td>pg-cs@sun.ac.za</td></tr>
+      <tr><td>Supervision Agreement</td><td>Formalise supervisor relationship</td><td>Postgrad Admin</td></tr>
+      <tr><td>Ethics Clearance Form</td><td>Research involving human subjects</td><td>Ethics Committee</td></tr>
+      <tr><td>Bursary Application (CS Dept)</td><td>Department financial support</td><td>pg-cs@sun.ac.za</td></tr>
+      <tr><td>Recognition of Prior Learning</td><td>Credit transfer requests</td><td>ug-cs@sun.ac.za</td></tr>
+    </tbody></table>
+    <h2 class="m-h2">Useful Links</h2>
+    <div class="m-grid">
+      <div class="m-card"><h3>📚 Academic</h3><p><a href="https://sunlearn.sun.ac.za" target="_blank" class="m-link">SUNLearn (LMS) ↗</a><br><a href="https://library.sun.ac.za" target="_blank" class="m-link">Library ↗</a><br><a href="https://scholar.sun.ac.za" target="_blank" class="m-link">SUNScholar ↗</a></p></div>
+      <div class="m-card"><h3>🖥 Student Admin</h3><p><a href="https://studentportaal.sun.ac.za" target="_blank" class="m-link">Student Portal ↗</a><br><a href="https://helpdesk.sun.ac.za" target="_blank" class="m-link">IT Helpdesk ↗</a><br><a href="https://map.sun.ac.za" target="_blank" class="m-link">Campus Map ↗</a></p></div>
+      <div class="m-card"><h3>🎓 Support</h3><p><a href="https://careers.sun.ac.za" target="_blank" class="m-link">Career Centre ↗</a><br><a href="https://sun.ac.za/cscd" target="_blank" class="m-link">Counselling ↗</a><br><a href="https://financialaid.sun.ac.za" target="_blank" class="m-link">Financial Aid ↗</a></p></div>
+      <div class="m-card"><h3>👥 Societies</h3><p>CS Society (CSS)<br>Women in Computing (WiCS)<br>AI &amp; Robotics Club<br>Cybersecurity Society</p></div>
+    </div>
+  `,onMount:()=>initAccordions()},
+
+  10:{label:'Contact',fullLabel:'Contact, Location & Directions',render:()=>`
+    <h1 class="m-h1">Contact &amp; Location</h1>
+    <div class="m-grid">
+      <div>
+        <h2 class="m-h2">Department Office</h2>
+        <div class="m-infobox"><strong>Department of Computer Science</strong><br>Stellenbosch University<br>Corner of Banghoek &amp; Joubert Streets<br>Stellenbosch, 7600 · Western Cape, South Africa<br><br><strong>Tel:</strong> +27 (0)21 808 4200<br><strong>Email:</strong> <a href="mailto:cs-office@sun.ac.za" class="m-link">cs-office@sun.ac.za</a><br><strong>Web:</strong> <a href="https://cs.sun.ac.za" target="_blank" class="m-link">cs.sun.ac.za ↗</a></div>
+        <h2 class="m-h2">Office Hours</h2>
+        <table class="m-table"><thead><tr><th>Day</th><th>Hours</th><th>Status</th></tr></thead><tbody>
+          <tr><td>Monday–Thursday</td><td>08:00–16:30</td><td id="moh-mon">—</td></tr>
+          <tr><td>Friday</td><td>08:00–15:30</td><td id="moh-fri">—</td></tr>
+          <tr><td>Saturday–Sunday</td><td>Closed</td><td style="color:var(--su-orange);font-family:'Share Tech Mono',monospace;font-size:0.72rem;">CLOSED</td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <h2 class="m-h2">Key Contacts</h2>
+        <div class="m-card"><h3>Head of Department</h3><p>Prof. A. van Zyl<br><a href="mailto:avanzyl@cs.sun.ac.za" class="m-link">avanzyl@cs.sun.ac.za</a><br>Room 1.24 | By appointment</p></div>
+        <div class="m-card"><h3>Undergraduate Coordinator</h3><p>Ms. T. Joubert<br><a href="mailto:ug-cs@sun.ac.za" class="m-link">ug-cs@sun.ac.za</a><br>Room G.05</p></div>
+        <div class="m-card"><h3>Postgraduate Administrator</h3><p>Mr. L. Abrahams<br><a href="mailto:pg-cs@sun.ac.za" class="m-link">pg-cs@sun.ac.za</a><br>Room G.06 | 09:00–15:00</p></div>
+        <div class="m-card"><h3>IT Support</h3><p><a href="mailto:cs-support@sun.ac.za" class="m-link">cs-support@sun.ac.za</a><br>Room B01 | 08:00–17:00</p></div>
+      </div>
+    </div>
+    <h2 class="m-h2">Campus Map</h2>
+    <div style="margin:14px 0;border:2px solid var(--page-border);overflow:hidden;height:280px;border-radius:4px;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.4!2d18.8648!3d-33.9324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcdb24f69c7d2e1%3A0x8d3b3e8e5e5e5e5e!2sDepartment%20of%20Computer%20Science%2C%20Stellenbosch%20University!5e0!3m2!1sen!2sza!4v1700000000000" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <h2 class="m-h2">Getting Here</h2>
+    <div class="m-acc-item">${faq('By Car from Cape Town','Take the N2 to the R310, follow signs to Stellenbosch central. CS Building on Banghoek Street near Rhenish Girls School. Paid parking at Banghoek Parking Garage. GPS: -33.9310, 18.8628.')}</div>
+    <div class="m-acc-item">${faq('By Train (Metrorail)','Cape Town–Stellenbosch line. From Stellenbosch station: 1.2 km walk (15 min) or short e-hailing ride. Trains run every 30 min during peak hours.')}</div>
+    <div class="m-acc-item">${faq('By Bus','Intercape and Greyhound stop at Stellenbosch town centre. The CS Building is a 10-minute walk from the bus terminal.')}</div>
+    <h2 class="m-h2">Social Media</h2>
+    <div class="m-grid3">
+      <div class="m-card" style="text-align:center;"><h3>𝕏 / Twitter</h3><p>@SU_ComputerSci</p></div>
+      <div class="m-card" style="text-align:center;"><h3>LinkedIn</h3><p>SU Computer Science Dept</p></div>
+      <div class="m-card" style="text-align:center;"><h3>YouTube</h3><p>SU CS Department</p></div>
+    </div>
+  `,onMount:()=>{
+    const now=new Date();const day=now.getDay();const h=now.getHours();
+    const mkStatus=open=>`<span style="color:${open?'#1a6040':'var(--su-orange)'};font-family:'Share Tech Mono',monospace;font-size:0.72rem;">${open?'✓ OPEN NOW':'✗ CLOSED'}</span>`;
+    const isWeekday=day>=1&&day<=4;const isFri=day===5;
+    const ms=document.getElementById('moh-mon');const fs=document.getElementById('moh-fri');
+    if(ms)ms.innerHTML=mkStatus(isWeekday&&h>=8&&h<17);
+    if(fs)fs.innerHTML=mkStatus(isFri&&h>=8&&h<16);
+    initAccordions();
+  }},
+
+  11:{label:'Advisor',fullLabel:'Degree Advisor — Smart Pathway Planner',render:()=>`
+    <h1 class="m-h1">🧠 Degree Advisor</h1>
+    <p class="m-p">Tell us about yourself and we'll suggest the ideal modules, research groups, and Honours track for your goals at Stellenbosch CS.</p>
+
+    <div class="advisor-step">
+      <div class="advisor-step-title">01 — Select your interests (pick all that apply)</div>
+      <div class="advisor-chip-group" id="adv-interests">
+        <div class="advisor-chip" data-val="ai" onclick="advToggle(this)">🤖 Artificial Intelligence</div>
+        <div class="advisor-chip" data-val="security" onclick="advToggle(this)">🔐 Cybersecurity</div>
+        <div class="advisor-chip" data-val="data" onclick="advToggle(this)">📊 Data Science</div>
+        <div class="advisor-chip" data-val="systems" onclick="advToggle(this)">⚡ Systems & HPC</div>
+        <div class="advisor-chip" data-val="bio" onclick="advToggle(this)">🧬 Bioinformatics</div>
+        <div class="advisor-chip" data-val="theory" onclick="advToggle(this)">📐 Theory & Formal Methods</div>
+        <div class="advisor-chip" data-val="graphics" onclick="advToggle(this)">🎮 Graphics & Vision</div>
+      </div>
+    </div>
+
+    <div class="advisor-step">
+      <div class="advisor-step-title">02 — Career goal</div>
+      <div class="advisor-chip-group" id="adv-goal">
+        <div class="advisor-chip" data-val="industry" onclick="advSingle(this,'adv-goal')">💼 Industry / Product</div>
+        <div class="advisor-chip" data-val="research" onclick="advSingle(this,'adv-goal')">🔬 Academic Research</div>
+        <div class="advisor-chip" data-val="startup" onclick="advSingle(this,'adv-goal')">🚀 Startup / Entrepreneur</div>
+        <div class="advisor-chip" data-val="phd" onclick="advSingle(this,'adv-goal')">🎓 PhD & Academia</div>
+      </div>
+    </div>
+
+    <div class="advisor-step">
+      <div class="advisor-step-title">03 — Current skill level</div>
+      <div class="advisor-chip-group" id="adv-skill">
+        <div class="advisor-chip" data-val="beginner" onclick="advSingle(this,'adv-skill')">🌱 Beginner — just starting</div>
+        <div class="advisor-chip" data-val="intermediate" onclick="advSingle(this,'adv-skill')">📚 Intermediate — Year 2–3</div>
+        <div class="advisor-chip" data-val="advanced" onclick="advSingle(this,'adv-skill')">🚀 Advanced — Hons/PG level</div>
+      </div>
+    </div>
+
+    <button class="advisor-generate-btn" onclick="generateAdvice()">⚡ Plan My Degree →</button>
+    <div id="advisor-result"></div>
+  `,onMount:()=>{}},
+
+  12:{label:'Graph',fullLabel:'Curriculum Prerequisite Graph',render:()=>`
+    <h1 class="m-h1">🕸 Curriculum Prerequisite Graph</h1>
+    <p class="m-p">Interactive module dependency graph. <strong>Hover</strong> for module info · <strong>Click</strong> to open details · <strong>Toggle paths</strong> to highlight tracks.</p>
+
+    <div class="graph-toolbar" id="graph-toolbar">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);letter-spacing:1px;margin-right:6px;">HIGHLIGHT PATH:</span>
+      <button class="graph-filter-btn" onclick="graphHighlight('all',this)">All</button>
+      <button class="graph-filter-btn" onclick="graphHighlight('ai',this)">🤖 AI Track</button>
+      <button class="graph-filter-btn" onclick="graphHighlight('security',this)">🔐 Security Track</button>
+      <button class="graph-filter-btn" onclick="graphHighlight('systems',this)">⚡ Systems Track</button>
+      <button class="graph-filter-btn" onclick="graphHighlight('honours',this)">🎓 Honours Path</button>
+    </div>
+
+    <div class="graph-legend">
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#61223b;"></div><span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--page-text2);">Year 1</span></div>
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#a07a30;"></div><span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--page-text2);">Year 2</span></div>
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#1a6040;"></div><span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--page-text2);">Year 3</span></div>
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#1a3a70;"></div><span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--page-text2);">Honours</span></div>
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#420f27;"></div><span style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--page-text2);">Postgraduate</span></div>
+    </div>
+
+    <div id="curr-graph-container">
+      <svg id="curr-graph-svg" width="100%" height="100%"></svg>
+    </div>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:0.63rem;color:var(--su-gold-d);margin-top:10px;opacity:0.7;">Drag nodes to rearrange · Scroll to zoom · Click any node for module details</p>
+  `,onMount:()=>setTimeout(initCurrGraph,120)},
+};
+
+/* ── TERMINAL ENGINE ── */
+const termBody=document.getElementById('m-term-body');
+function addLine(text,cls=''){
+  return new Promise(resolve=>{
+    const div=document.createElement('div');
+    div.className='m-line '+cls;
+    div.innerHTML=text;
+    termBody.appendChild(div);
+    termBody.scrollTop=termBody.scrollHeight;
+    resolve(div);
+  });
+}
+
+const menuItems=[
+  {n:1,  v:'├── [01] Department Overview & Welcome'},
+  {n:2,  v:'├── [02] Academic Staff & Faculty Profiles'},
+  {n:3,  v:'├── [03] Publications & Research Output  ← LIVE DATA'},
+  {n:4,  v:'├── [04] Programmes — Undergraduate & Postgraduate'},
+  {n:5,  v:'├── [05] Course Catalogue / Module Listings'},
+  {n:6,  v:'├── [06] Research Groups, Labs & Centres  ← LIVE DATA'},
+  {n:7,  v:'├── [07] News, Announcements & Press Releases'},
+  {n:8,  v:'├── [08] Events & Seminars Calendar'},
+  {n:9,  v:'├── [09] Student Resources — FAQs, Forms & Links'},
+  {n:10, v:'├── [10] Contact, Location & Directions'},
+  {n:11, v:'├── [11] 🧠 Degree Advisor — Smart Pathway Planner  ← NEW'},
+  {n:12, v:'└── [12] 🕸  Curriculum Prerequisite Graph  ← NEW'},
+];
+
+async function showMenu(){
+  await addLine('');
+  await addLine('┌──────────────────────────────────────────────────────────────┐','maroon');
+  await addLine('│  STELLENBOSCH UNIVERSITY — DEPARTMENT OF COMPUTER SCIENCE    │','maroon');
+  await addLine('│  Pursue. Discover. Together.                                 │','maroon');
+  await addLine('└──────────────────────────────────────────────────────────────┘','maroon');
+  await addLine('');
+  await addLine('cs.sun.ac.za','bright');
+  for(let i=0;i<menuItems.length;i++){
+    const item=menuItems[i];
+    await delay(80+i*20);
+    const div=document.createElement('div');
+    div.className='m-line selectable dim';
+    div.textContent=item.v;
+    div.addEventListener('click',()=>mOpenPage(item.n));
+    termBody.appendChild(div);
+    termBody.scrollTop=termBody.scrollHeight;
+  }
+  await addLine('');
+  await addLine('─── Type [01–10] · "help" · Tab to autocomplete ───────────────','cyan');
+  await addLine('─── "light" / "dark" to change theme · ESC returns to terminal ','cyan');
+  await addLine('');
+}
+
+/* ── COMMAND HANDLER ── */
+const pageAliases={
+  'overview':1,'welcome':1,'about':1,'home':1,
+  'staff':2,'faculty':2,'people':2,'professors':2,
+  'publications':3,'papers':3,'pubs':3,'research':3,'output':3,
+  'programmes':4,'programs':4,'degrees':4,'postgrad':4,'undergrad':4,
+  'courses':5,'catalogue':5,'modules':5,'catalog':5,
+  'labs':6,'groups':6,'centres':6,'centers':6,
+  'news':7,'announcements':7,'press':7,
+  'events':8,'seminars':8,'calendar':8,
+  'resources':9,'students':9,'faq':9,'faqs':9,'forms':9,
+  'contact':10,'location':10,'directions':10,'map':10,
+  'advisor':11,'advice':11,'planner':11,'pathway':11,'plan':11,
+  'graph':12,'curriculum':12,'prerequisites':12,'prereq':12,'network':12,
+};
+function resolvePageNum(cmd){
+  const c=cmd.trim().toLowerCase().replace(/^(cd|open|go|cat|goto|nav)\s+/,'');
+  const n=parseInt(c);if(!isNaN(n)&&n>=1&&n<=12)return n;
+  if(pageAliases[c])return pageAliases[c];
+  for(const key of Object.keys(pageAliases)){if(key.startsWith(c)&&c.length>=3)return pageAliases[key];}
+  return null;
+}
+
+const cmdHistory=[];let histIdx=-1;
+const promptInput=document.getElementById('m-prompt-input');
+const hintEl=document.getElementById('m-autocomplete');
+const bootTime=new Date();
+
+const allCmds=['help','menu','clear','cls','ls','date','time','uptime','whoami','pwd','history','theme','light','dark','sudo hackathon',
+  'cd overview','cd staff','cd publications','cd programmes','cd courses','cd labs','cd news','cd events','cd resources','cd contact','cd advisor','cd graph',
+  '1','2','3','4','5','6','7','8','9','10','11','12'];
+
+function getAutocomplete(val){
+  if(!val||val.length<1)return '';
+  return allCmds.find(c=>c.startsWith(val.toLowerCase())&&c!==val.toLowerCase())||'';
+}
+
+promptInput.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    const val=promptInput.value.trim();
+    if(val){cmdHistory.unshift(val);histIdx=-1;}
+    promptInput.value='';hintEl.textContent='';
+    handleCommand(val);
+  }else if(e.key==='ArrowUp'){e.preventDefault();if(histIdx<cmdHistory.length-1){histIdx++;promptInput.value=cmdHistory[histIdx];}}
+  else if(e.key==='ArrowDown'){e.preventDefault();if(histIdx>0){histIdx--;promptInput.value=cmdHistory[histIdx];}else{histIdx=-1;promptInput.value='';}}
+  else if(e.key==='Tab'){e.preventDefault();const hint=getAutocomplete(promptInput.value);if(hint)promptInput.value=hint;hintEl.textContent='';}
+});
+promptInput.addEventListener('input',()=>{
+  const v=promptInput.value;
+  hintEl.textContent=getAutocomplete(v)?getAutocomplete(v).slice(v.length):'';
+});
+
+async function handleCommand(cmd){
+  if(!cmd)return;
+  await addLine(`cs@sun:~$ ${cmd}`,'dim');
+  const lower=cmd.trim().toLowerCase();
+  if(lower==='date'||lower==='time'){
+    const now=new Date();
+    await addLine(now.toLocaleDateString('en-ZA',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+'  '+now.toLocaleTimeString('en-ZA')+'  [SAST]','green');return;
+  }
+  if(lower==='uptime'){
+    const secs=Math.floor((new Date()-bootTime)/1000);const m=Math.floor(secs/60),s=secs%60;
+    await addLine(` up ${m}m ${s}s,  1 user,  load: 0.42`,'green');return;
+  }
+  if(lower==='history'){cmdHistory.forEach((c,i)=>addLine(`  ${String(cmdHistory.length-i).padStart(3)}  ${c}`,'dim'));return;}
+  if(lower==='theme'||lower==='theme toggle'){mToggleTheme();const isL=R.classList.contains('light-mode');await addLine(`Theme: ${isL?'LIGHT':'DARK'} mode. Type "${isL?'dark':'light'}" to revert.`,isL?'bright':'green');return;}
+  if(lower==='light'||lower==='theme light'){mToggleTheme(false);await addLine('☀️  Switched to LIGHT mode.','bright');return;}
+  if(lower==='dark'||lower==='theme dark'){mToggleTheme(true);await addLine('🌙  Switched to DARK mode.','green');return;}
+  if(lower==='whoami'){await addLine('visitor@cs.sun.ac.za','green');return;}
+  if(lower==='pwd'){await addLine('/cs/sun.ac.za/public','green');return;}
+  if(lower==='help'||lower==='?'){
+    const lines=[
+      '┌──────────────────────────────────────────────────────────┐',
+      '│  MATIS-OS COMMANDS                                        │',
+      '├──────────────────────────────────────────────────────────┤',
+      '│  1–10 / 01–10    Open page by number                     │',
+      '│  cd <page>       cd staff, cd events, cd pubs …          │',
+      '│  ls              List all pages                           │',
+      '│  menu            Redisplay navigation tree                │',
+      '│  clear / cls     Clear terminal                           │',
+      '│  date / time     Current date and time (SAST)             │',
+      '│  uptime          Session uptime since page load           │',
+      '│  history         Show command history                     │',
+      '│  light / dark    Switch colour theme                      │',
+      '│  theme           Toggle light / dark mode                 │',
+      '│  whoami / pwd    Current user / directory                 │',
+      '│  Tab             Autocomplete command                     │',
+      '│  ↑↓ arrows       Navigate command history                 │',
+      '│  ESC             Return to terminal from page view        │',
+      '└──────────────────────────────────────────────────────────┘',
+    ];
+    for(const l of lines)await addLine(l,l.includes('│')&&!l.includes('┌')&&!l.includes('└')&&!l.includes('COMMANDS')&&!l.includes('──')?'cyan':'maroon');
+    return;
+  }
+  if(lower==='menu'){await showMenu();return;}
+  if(lower==='clear'||lower==='cls'){termBody.innerHTML='';await showMenu();return;}
+  if(lower==='sudo hackathon'||lower==='hackathon'){triggerHackathon();await addLine('🏆 [ACHIEVEMENT UNLOCKED] sudo hackathon — Welcome to hackathon mode!','green');return;}
+  if(lower==='ls'||lower==='ls -la'||lower==='dir'){
+    const now=new Date();const ds=now.toLocaleDateString('en-ZA',{day:'2-digit',month:'short'});
+    await addLine('total 10','dim');
+    for(const[n,p]of Object.entries(pages)){
+      const live=[1,2,3,6].includes(Number(n))?'  [LIVE]':'';
+      await addLine(`drwxr-xr-x  ${String(n).padStart(2,'0')}_${p.label.toLowerCase().replace(/ /g,'_')}  ${ds}  ${p.fullLabel}${live}`,'green');
+    }
+    return;
+  }
+  const resolved=resolvePageNum(cmd);
+  if(resolved){await addLine(`Opening [${String(resolved).padStart(2,'0')}] ${pages[resolved].fullLabel}…`,'green');await delay(110);triggerGlitch();mOpenPage(resolved);return;}
+  await addLine(`bash: ${cmd}: command not found`,'red');
+  await addLine('Type "help" for commands, or a number 1–10 to open a page.','dim');
+}
+
+/* ── PAGE VIEW ── */
+const pageView=document.getElementById('m-page');
+const pageContent=document.getElementById('m-content');
+const terminal=document.getElementById('m-terminal');
+const navBar=document.getElementById('m-nav-bar');
+const breadcrumb=document.getElementById('m-breadcrumb');
+const search=document.getElementById('m-search');
+let currentPage=null;
+
+const NAV_ICONS={'1':'🏛','2':'👥','3':'📄','4':'🎓','5':'📚','6':'🔬','7':'📰','8':'📅','9':'🎒','10':'📬','11':'🧠','12':'🕸'};
+function buildNavBar(active){
+  navBar.innerHTML=Object.entries(pages).map(([n,p])=>
+    `<button class="m-nav-btn ${Number(n)===active?'active':''}" onclick="mOpenPage(${n})" title="${p.fullLabel||p.label}"><span class="m-nav-icon">${NAV_ICONS[n]||'📁'}</span><span class="m-nav-label">${p.label}</span></button>`
+  ).join('');
+}
+
+function mOpenPage(n){
+  const page=pages[n];if(!page)return;
+  currentPage=n;
+  pageContent.innerHTML=page.render();
+  buildNavBar(n);
+  breadcrumb.innerHTML=`<span>/</span> cs.sun.ac.za <span>/</span> ${page.fullLabel.toLowerCase().replace(/ /g,'-')}`;
+  pageView.classList.add('visible');
+  terminal.classList.add('hidden');
+  triggerGlitch();
+  pageContent.scrollTop=0;
+  if(page.onMount)setTimeout(page.onMount,60);
+}
+window.mOpenPage=mOpenPage;
+
+function mClosePage(){
+  pageView.classList.remove('visible');
+  terminal.classList.remove('hidden');
+  triggerGlitch();
+  setTimeout(()=>promptInput.focus(),400);
+}
+window.mClosePage=mClosePage;
+
+/* In-page search */
+search.addEventListener('input',()=>{
+  const q=search.value.trim();
+  pageContent.querySelectorAll('.m-search-hl').forEach(el=>{el.outerHTML=el.textContent;});
+  if(!q||q.length<2)return;
+  const walker=document.createTreeWalker(pageContent,NodeFilter.SHOW_TEXT);
+  const matches=[];let node;
+  while(node=walker.nextNode()){if(node.textContent.toLowerCase().includes(q.toLowerCase())&&!['SCRIPT','STYLE','INPUT'].includes(node.parentElement.tagName))matches.push(node);}
+  matches.slice(0,30).forEach(n=>{
+    const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+    const sp=document.createElement('span');
+    sp.innerHTML=n.textContent.replace(re,'<mark class="m-search-hl">$1</mark>');
+    n.parentNode.replaceChild(sp,n);
+  });
+  const first=pageContent.querySelector('.m-search-hl');
+  if(first)first.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+/* Pub filter */
+window.mFilterPubs=async function(type,btn){
+  document.querySelectorAll('#mpub-filter .m-nav-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const container=document.getElementById('mpubs-live');
+  container.innerHTML=`<div class="m-loading"><div class="m-spinner"></div>Fetching publications…</div>`;
+  const topicMap={
+    recent:ALEX_BASE+'&sort=publication_date:desc&per-page=10&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic',
+    cited:ALEX_BASE+'&sort=cited_by_count:desc&per-page=10&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic',
+    ai:'https://api.openalex.org/works?filter=authorships.institutions.id:I26092322,title.search:machine+learning|deep+learning|neural+network|artificial+intelligence&sort=publication_date:desc&per-page=10&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic',
+    security:'https://api.openalex.org/works?filter=authorships.institutions.id:I26092322,title.search:cybersecurity|cryptography|security|malware|post-quantum&sort=publication_date:desc&per-page=10&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic',
+    bio:'https://api.openalex.org/works?filter=authorships.institutions.id:I26092322,title.search:bioinformatics|genomics|proteomics|computational+biology&sort=publication_date:desc&per-page=10&select=title,authorships,primary_location,publication_year,doi,cited_by_count,primary_topic',
+  };
+  await fetchPubs(topicMap[type]||topicMap.recent,'mpubs-live',10,true);
+};
+
+/* Keyboard shortcuts */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(document.getElementById('m-modal').classList.contains('open')){mCloseModal();return;}
+    if(pageView.classList.contains('visible')){mClosePage();return;}
+  }
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
+  const k=parseInt(e.key);
+  if(!isNaN(k)&&k>=1&&k<=9&&!e.ctrlKey&&!e.metaKey){mOpenPage(k);triggerGlitch();}
+  if(e.key==='0'&&!e.ctrlKey&&!e.metaKey){mOpenPage(10);triggerGlitch();}
+  if((e.key==='?'||e.key==='/')&&!pageView.classList.contains('visible')){promptInput.focus();promptInput.value='help';}
+});
+
+/* ── SHOW PROMPT ── */
+function showPrompt(){
+  const pa=document.getElementById('m-prompt-area');
+  if(pa) pa.style.display='flex';
+  setTimeout(()=>{ if(promptInput) promptInput.focus(); },100);
+}
+
+/* ── BOOT SEQUENCE ── */
+
+/* ══ CHART.JS VISUALISATIONS ══ */
+const PROG_DATA=[
+  {label:'BSc CS',     nsc:65,duration:3,nqf:7, color:'#61223b'},
+  {label:'BDatSci',   nsc:80,duration:4,nqf:7, color:'#1a3a70'},
+  {label:'BScHons',   nsc:72,duration:1,nqf:8, color:'#a07a30'},
+  {label:'MSc',       nsc:75,duration:2,nqf:9, color:'#1a6040'},
+  {label:'MEng',      nsc:73,duration:2,nqf:9, color:'#dc4405'},
+  {label:'PhD',       nsc:80,duration:4,nqf:10,color:'#420f27'},
+];
+let _progChart=null,_resChart=null;
+function _chartColors(){
+  const dark=!document.getElementById('matis-root').classList.contains('light-mode');
+  return {text:dark?'#caa258':'#61223b',grid:dark?'rgba(202,162,88,0.12)':'rgba(97,34,59,0.1)'};
+}
+function initProgChart(){
+  const el=document.getElementById('prog-chart');
+  if(!el||typeof Chart==='undefined')return;
+  if(_progChart){_progChart.destroy();_progChart=null;}
+  const {text,grid}=_chartColors();
+  _progChart=new Chart(el,{
+    type:'bubble',
+    data:{datasets:PROG_DATA.map(p=>({
+      label:p.label,
+      data:[{x:p.duration,y:p.nsc,r:p.nqf*2.8}],
+      backgroundColor:p.color+'bb',borderColor:p.color,borderWidth:2
+    }))},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,position:'right',labels:{color:text,font:{family:'Raleway',size:11},padding:6}},
+        tooltip:{callbacks:{label:d=>{const p=PROG_DATA.find(x=>x.label===d.dataset.label);return p?`${p.label}: NSC≥${p.nsc}%, ${p.duration}yr, NQF${p.nqf}`:'';}}},
+      },
+      scales:{
+        x:{title:{display:true,text:'Duration (years)',color:text,font:{family:'Raleway',size:11}},ticks:{color:text,stepSize:1},grid:{color:grid},min:0,max:5.5},
+        y:{title:{display:true,text:'Min NSC %',color:text,font:{family:'Raleway',size:11}},ticks:{color:text},grid:{color:grid},min:55,max:88}
+      }
+    }
+  });
+}
+function updateProgChart(val){
+  const el=document.getElementById('nsc-val');
+  if(el)el.textContent=val+'%';
+  if(!_progChart||typeof Chart==='undefined')return;
+  const n=Number(val);
+  _progChart.data.datasets=PROG_DATA.filter(p=>p.nsc>=n).map(p=>({
+    label:p.label,data:[{x:p.duration,y:p.nsc,r:p.nqf*2.8}],
+    backgroundColor:p.color+'bb',borderColor:p.color,borderWidth:2
+  }));
+  _progChart.update();
+}
+function initResearchChart(){
+  const el=document.getElementById('research-trends-chart');
+  if(!el||typeof Chart==='undefined')return;
+  if(_resChart){_resChart.destroy();_resChart=null;}
+  const {text,grid}=_chartColors();
+  _resChart=new Chart(el,{
+    type:'line',
+    data:{
+      labels:['2019','2020','2021','2022','2023','2024'],
+      datasets:[
+        {label:'Publications',data:[52,58,61,65,68,70],borderColor:'#61223b',backgroundColor:'rgba(97,34,59,0.1)',tension:0.4,fill:true,pointRadius:4},
+        {label:'Citations (×10)',data:[38,45,54,60,68,75],borderColor:'#caa258',backgroundColor:'rgba(202,162,88,0.08)',tension:0.4,fill:true,pointRadius:4},
+        {label:'Intl. Collaborations',data:[8,10,12,14,17,19],borderColor:'#82CCAE',backgroundColor:'rgba(130,204,174,0.08)',tension:0.4,fill:true,pointRadius:4},
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{labels:{color:text,font:{family:'Raleway',size:11}}}},
+      scales:{
+        x:{ticks:{color:text},grid:{color:grid}},
+        y:{ticks:{color:text},grid:{color:grid},min:0}
+      }
+    }
+  });
+}
+
+/* ══ BOOT SEQUENCE ══ */
+async function runBoot(){
+  const boot=document.getElementById('m-boot');
+  const logo=document.getElementById('mb-logo');
+  const barWrap=document.getElementById('mb-bar-wrap');
+  const bar=document.getElementById('mb-bar');
+  await delay(200);
+  logo.style.animation='mBootFade 0.6s forwards';
+  barWrap.style.animation='mBootFade 0.6s 0.4s forwards';
+  await delay(600);
+  bar.style.width='100%';
+  const lines=['mbl1','mbl2','mbl3','mbl4','mbl5','mbl6'];
+  for(let i=0;i<lines.length;i++){await delay(220);document.getElementById(lines[i]).classList.add('show');triggerGlitch();}
+  await delay(900);
+  boot.classList.add('fade-out');
+  await delay(800);
+  boot.style.display='none';
+  scheduleGlitch();
+  await delay(150);
+  await addLine('MATIS-OS v4.3.0 LTS — Stellenbosch University Kernel','dim');
+  await addLine('Copyright (c) 2025 Stellenbosch University — Dept of Computer Science','dim');
+  await addLine('Pursue. Discover. Together.','dim');
+  await addLine('');
+  const now=new Date();const pad=n=>String(n).padStart(2,'0');
+  await addLine('Last login: '+now.toDateString()+' '+pad(now.getHours())+':'+pad(now.getMinutes())+':'+pad(now.getSeconds()),'dim');
+  await addLine('');
+  await showMenu();
+  showPrompt();
+}
+
+/* ══════════════════════════════════════════════════
+   DEGREE ADVISOR LOGIC
+   ══════════════════════════════════════════════════ */
+window.advToggle=function(el){el.classList.toggle('selected');};
+window.advSingle=function(el,groupId){
+  document.querySelectorAll(`#${groupId} .advisor-chip`).forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+};
+
+const ADVISOR_DATA={
+  ai:{
+    modules:{beginner:['CS 114','CS 144','WIS 114'],intermediate:['CS 315 — Machine Learning','CS 354 — Computer Vision','STAT 244'],advanced:['CS 448 — Advanced ML','CS 421 — NLP','CS 411 — Advanced Algorithms']},
+    track:{name:'AI & Machine Learning Honours Track',desc:'Focus on CS 315, CS 354, CS 448. Research project with AIRL. Leads to MSc/PhD in ML.',lab:'🤖 AI Research Lab (AIRL)',supervisor:'Prof. M. Dlamini'},
+    career:{industry:'ML Engineer, AI Product Lead (R600–900k p.a.)',research:'PhD in ML, DeepMind, CSIR AI',startup:'AI startup founder, CTO'},
+  },
+  security:{
+    modules:{beginner:['CS 114','CS 144','WIS 144'],intermediate:['CS 313 — Networks','CS 244 — Architecture','WIS 214'],advanced:['CS 450 — Applied Cryptography','CS 347 — Computer Security','CS 411 — Algorithms']},
+    track:{name:'Cybersecurity Honours Track',desc:'Focus on CS 313, CS 450 (Cryptography), CS 345. Research project with CCS. Post-quantum specialisation.',lab:'🔐 Centre for Cybersecurity (CCS)',supervisor:'Prof. R. Botha'},
+    career:{industry:'Security analyst, Penetration tester (R550–850k)',research:'PhD in Cryptography, CSIR, NCPF',startup:'Security startup, CISO'},
+  },
+  data:{
+    modules:{beginner:['CS 114','STAT 144','WIS 114'],intermediate:['CS 214 — DSA','STAT 244 — Math Stats','CS 343 — Databases'],advanced:['CS 448 — Advanced ML','CS 411 — Algorithms','BDatSci electives']},
+    track:{name:'Data Science & Analytics Track',desc:'Combine CS 315, STAT 244, CS 343. Strong BDatSci pathway. Capstone in data engineering.',lab:'🤖 AI Research Lab + Statistics Dept',supervisor:'Prof. M. Dlamini / Statistics Faculty'},
+    career:{industry:'Data scientist, Quant analyst (R600–1M p.a.)',research:'PhD in Data Science / Statistics',startup:'Data product startup, CDO'},
+  },
+  systems:{
+    modules:{beginner:['CS 114','CS 144','FIS 114'],intermediate:['CS 244 — Architecture','CS 314 — Concurrent Prog','CS 213 — Networks'],advanced:['CS 452 — Cloud & Distributed','CS 414 — Concurrent','CS 411']},
+    track:{name:'Systems & HPC Honours Track',desc:'Focus on CS 244, CS 314, CS 452. Research project with HPC Group. Access to CHPC Lengau supercomputer.',lab:'⚡ High-Performance Computing Group',supervisor:'Assoc. Prof. L. Engelbrecht'},
+    career:{industry:'Systems engineer, Cloud architect (R580–900k)',research:'PhD in Distributed Systems, HPC',startup:'Infra startup, DevOps founder'},
+  },
+  bio:{
+    modules:{beginner:['CS 114','WIS 114','STAT 144'],intermediate:['CS 214 — DSA','STAT 244','CS 315 — ML'],advanced:['CS 449 — Bioinformatics Algorithms','CS 448 — Advanced ML','CS 411']},
+    track:{name:'Bioinformatics Honours Track',desc:'Focus on CS 449, CS 315, research in genomics. SARChI Chair supervision. H3Africa data access.',lab:'🧬 Computational Biology Group (CBG)',supervisor:'Prof. S. Naidoo'},
+    career:{industry:'Bioinformatician, Pharma data scientist (R500–800k)',research:'PhD in Bioinformatics, NIH, H3Africa',startup:'Health tech startup, biotech founder'},
+  },
+  theory:{
+    modules:{beginner:['CS 114','WIS 144','WIS 114'],intermediate:['CS 345 — Computability','WIS 214','WIS 244'],advanced:['CS 451 — Formal Verification','CS 411 — Advanced Algorithms','CS 413 — Research Methods']},
+    track:{name:'Theory & Formal Methods Track',desc:'Focus on CS 345, CS 451, CS 411. Isabelle/HOL theorem proving. Collaboration with INRIA France.',lab:'📐 Formal Methods Group',supervisor:'Assoc. Prof. T. Mokoena'},
+    career:{industry:'Formal methods engineer, Safety systems (R520–780k)',research:'PhD in PL Theory, INRIA, MPI-SWS',startup:'Verification tooling startup'},
+  },
+  graphics:{
+    modules:{beginner:['CS 114','CS 144','FIS 114'],intermediate:['CS 214 — DSA','CS 354 — Computer Vision','CS 244'],advanced:['CS 448 — Advanced ML','CS 411','Graphics Electives']},
+    track:{name:'Graphics & Vision Honours Track',desc:'Focus on CS 354, computer graphics, VR/AR. Industry ties with local studios.',lab:'🎮 Computer Graphics & Vision Lab',supervisor:'Dr. P. Hendricks / Dr. Sithole'},
+    career:{industry:'Game dev, VR engineer, Computer Vision (R480–750k)',research:'PhD in Computer Vision / Graphics',startup:'Games startup, XR company'},
+  },
+};
+
+window.generateAdvice=function(){
+  const interests=[...document.querySelectorAll('#adv-interests .advisor-chip.selected')].map(c=>c.dataset.val);
+  const goal=document.querySelector('#adv-goal .advisor-chip.selected')?.dataset.val||'industry';
+  const skill=document.querySelector('#adv-skill .advisor-chip.selected')?.dataset.val||'intermediate';
+  if(!interests.length){
+    document.getElementById('advisor-result').innerHTML=`<div class="m-infobox alert">⚠ Please select at least one interest area.</div>`;
+    return;
+  }
+  triggerGlitch();
+  const primary=interests[0];
+  const data=ADVISOR_DATA[primary]||ADVISOR_DATA.ai;
+  const mods=data.modules[skill]||data.modules.intermediate;
+  const allMods=[...new Set(interests.flatMap(i=>ADVISOR_DATA[i]?.modules[skill]||[]))].slice(0,8);
+  const labs=[...new Set(interests.map(i=>ADVISOR_DATA[i]?.track?.lab).filter(Boolean))];
+
+  document.getElementById('advisor-result').innerHTML=`
+    <div class="advisor-result">
+      <div class="advisor-result-title">Your Personalised CS Pathway</div>
+
+      <div class="advisor-rec-section">
+        <div class="advisor-rec-label">📚 Recommended Modules (${skill} level)</div>
+        <div>${allMods.map(m=>`<span class="advisor-mod-pill" onclick="mOpenPage(5)" title="View in Course Catalogue">📘 ${m}</span>`).join('')}</div>
+      </div>
+
+      <div class="advisor-rec-section">
+        <div class="advisor-rec-label">🔬 Research Groups for You</div>
+        ${labs.map(lab=>`<div class="advisor-track-card">${lab}</div>`).join('')}
+      </div>
+
+      <div class="advisor-rec-section">
+        <div class="advisor-rec-label">🎓 Honours Track</div>
+        <div class="advisor-track-card">
+          <strong style="font-family:'Raleway',sans-serif;color:var(--page-maroon);">${data.track.name}</strong>
+          <p style="font-size:0.9rem;margin-top:6px;font-family:'Raleway',sans-serif;">${data.track.desc}</p>
+          <div style="margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--su-gold-d);">Supervisor: ${data.track.supervisor}</div>
+        </div>
+      </div>
+
+      <div class="advisor-rec-section">
+        <div class="advisor-rec-label">💼 Career Outcomes (${goal})</div>
+        <div class="m-infobox success" style="margin:6px 0;">${data.career[goal]||data.career.industry}</div>
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="advisor-generate-btn" style="font-size:0.75rem;padding:8px 20px;" onclick="mOpenPage(12)">🕸 View Curriculum Graph →</button>
+        <button class="advisor-generate-btn" style="font-size:0.75rem;padding:8px 20px;background:transparent;color:var(--su-gold);" onclick="mOpenPage(6)">🔬 Explore Research Groups →</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('advisor-result').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+/* ══════════════════════════════════════════════════
+   CURRICULUM GRAPH (D3 Force)
+   ══════════════════════════════════════════════════ */
+const GRAPH_NODES=[
+  {id:'CS114',label:'CS 114',name:'Intro to CS 1',year:1,color:'#61223b',credits:16,sem:'S1',desc:'Foundations of programming, algorithms, problem-solving. Python/Java introduction.'},
+  {id:'CS144',label:'CS 144',name:'Intro to CS 2',year:1,color:'#61223b',credits:16,sem:'S2',desc:'Object-oriented programming, recursion, basic data structures.'},
+  {id:'WIS114',label:'WIS 114',name:'Mathematics 114',year:1,color:'#61223b',credits:16,sem:'S1',desc:'Calculus, linear algebra, introduction to proofs.'},
+  {id:'WIS144',label:'WIS 144',name:'Mathematics 144',year:1,color:'#61223b',credits:16,sem:'S2',desc:'Discrete mathematics, combinatorics, proof techniques.'},
+  {id:'FIS114',label:'FIS 114',name:'Physics 114',year:1,color:'#61223b',credits:16,sem:'S1',desc:'Classical mechanics and electromagnetism for computing.'},
+  {id:'STAT144',label:'STAT 144',name:'Intro Statistics',year:1,color:'#61223b',credits:12,sem:'S2',desc:'Probability, descriptive statistics, distributions.'},
+  {id:'CS214',label:'CS 214',name:'Data Structures & Algorithms',year:2,color:'#a07a30',credits:16,sem:'S1',desc:'Arrays, linked lists, trees, graphs, sorting, searching, complexity analysis.'},
+  {id:'CS244',label:'CS 244',name:'Architecture & OS',year:2,color:'#a07a30',credits:16,sem:'S2',desc:'Computer organisation, assembly, OS principles, memory management, concurrency.'},
+  {id:'WIS214',label:'WIS 214',name:'Mathematics 214',year:2,color:'#a07a30',credits:16,sem:'S1',desc:'Abstract algebra, group theory, rings, fields.'},
+  {id:'STAT244',label:'STAT 244',name:'Mathematical Statistics',year:2,color:'#a07a30',credits:16,sem:'S2',desc:'Hypothesis testing, regression, statistical inference.'},
+  {id:'CS313',label:'CS 313',name:'Computer Networks',year:3,color:'#1a6040',credits:16,sem:'S1',desc:'TCP/IP, routing, protocols, network security, socket programming.',track:['security','systems']},
+  {id:'CS314',label:'CS 314',name:'Concurrent Programming',year:3,color:'#1a6040',credits:16,sem:'S1',desc:'Threads, synchronisation, deadlock, parallel patterns.',track:['systems']},
+  {id:'CS315',label:'CS 315',name:'Machine Learning',year:3,color:'#1a6040',credits:16,sem:'S1',desc:'Supervised/unsupervised learning, neural networks, regression, SVM.',track:['ai','data']},
+  {id:'CS343',label:'CS 343',name:'Databases & Web',year:3,color:'#1a6040',credits:16,sem:'S1',desc:'Relational algebra, SQL, web frameworks, APIs.',track:['data']},
+  {id:'CS344',label:'CS 344',name:'Software Engineering',year:3,color:'#1a6040',credits:16,sem:'S2',desc:'Design patterns, Agile, testing, CI/CD, software architecture.',track:['honours']},
+  {id:'CS345',label:'CS 345',name:'Computability & Formal Languages',year:3,color:'#1a6040',credits:16,sem:'S2',desc:'Automata, Turing machines, decidability, P vs NP.',track:['theory','honours']},
+  {id:'CS354',label:'CS 354',name:'Computer Vision',year:3,color:'#1a6040',credits:16,sem:'S2',desc:'Image processing, CNNs, object detection, SLAM.',track:['ai','graphics']},
+  {id:'CS411',label:'CS 411',name:'Advanced Algorithms',year:4,color:'#1a3a70',credits:20,sem:'S1',desc:'Advanced graph algorithms, approximation, randomised algorithms, competitive programming.',track:['honours','ai','security','theory']},
+  {id:'CS413',label:'CS 413',name:'Research Methodology',year:4,color:'#1a3a70',credits:10,sem:'S1',desc:'Scientific writing, literature review, experimental design, ethics.',track:['honours']},
+  {id:'CS421',label:'CS 421',name:'NLP',year:4,color:'#1a3a70',credits:20,sem:'S2',desc:'Natural Language Processing, transformers, LLMs, African languages NLP.',track:['ai','honours']},
+  {id:'CS441',label:'CS 441',name:'Advanced Software Engineering',year:4,color:'#1a3a70',credits:20,sem:'S2',desc:'Distributed systems, microservices, cloud, DevOps at scale.',track:['systems','honours']},
+  {id:'CS490',label:'CS 490',name:'Honours Research Project',year:4,color:'#1a3a70',credits:40,sem:'Ann',desc:'Original research project supervised by a faculty member. Culmination of Honours year.',track:['honours']},
+  {id:'CS448',label:'CS 448',name:'Advanced Machine Learning',year:5,color:'#420f27',credits:20,sem:'S1',desc:'Deep learning, reinforcement learning, generative models, research frontiers.',track:['ai']},
+  {id:'CS449',label:'CS 449',name:'Bioinformatics Algorithms',year:5,color:'#420f27',credits:20,sem:'S1',desc:'Sequence alignment, phylogenetics, genomic pipelines, proteomics.',track:['bio']},
+  {id:'CS450',label:'CS 450',name:'Applied Cryptography',year:5,color:'#420f27',credits:20,sem:'S2',desc:'Public-key crypto, post-quantum cryptography, protocol design, zero-knowledge proofs.',track:['security']},
+  {id:'CS451',label:'CS 451',name:'Formal Verification',year:5,color:'#420f27',credits:20,sem:'S2',desc:'Isabelle/HOL theorem proving, model checking, smart contract verification.',track:['theory']},
+  {id:'CS452',label:'CS 452',name:'Cloud & Distributed Systems',year:5,color:'#420f27',credits:20,sem:'S2',desc:'Distributed consensus, Kubernetes, cloud architecture, fault tolerance.',track:['systems']},
+];
+
+const GRAPH_LINKS=[
+  {source:'CS114',target:'CS144'},{source:'CS114',target:'CS214'},
+  {source:'CS144',target:'CS214'},{source:'CS144',target:'CS244'},
+  {source:'WIS114',target:'WIS214'},{source:'WIS114',target:'CS315'},
+  {source:'WIS144',target:'WIS214'},{source:'WIS144',target:'CS345'},
+  {source:'CS214',target:'CS313'},{source:'CS214',target:'CS314'},
+  {source:'CS214',target:'CS315'},{source:'CS214',target:'CS343'},
+  {source:'CS214',target:'CS344'},{source:'CS214',target:'CS345'},
+  {source:'CS214',target:'CS411'},{source:'CS244',target:'CS313'},
+  {source:'CS244',target:'CS314'},{source:'CS244',target:'CS441'},
+  {source:'WIS214',target:'CS345'},{source:'STAT244',target:'CS315'},
+  {source:'CS315',target:'CS354'},{source:'CS315',target:'CS448'},
+  {source:'CS344',target:'CS441'},{source:'CS345',target:'CS411'},
+  {source:'CS345',target:'CS451'},{source:'CS313',target:'CS450'},
+  {source:'CS411',target:'CS490'},{source:'CS413',target:'CS490'},
+  {source:'CS421',target:'CS490'},{source:'CS441',target:'CS490'},
+  {source:'CS315',target:'CS449'},{source:'CS354',target:'CS421'},
+  {source:'CS314',target:'CS452'},{source:'CS441',target:'CS452'},
+];
+
+const TRACK_COLORS={ai:'#82CCAE',security:'#dc4405',systems:'#64c8d4',honours:'#caa258',all:null};
+let _graphSim=null, _graphHighlight='all';
+
+function initCurrGraph(){
+  const container=document.getElementById('curr-graph-container');
+  if(!container||typeof d3==='undefined')return;
+  const svg=d3.select('#curr-graph-svg');
+  const W=container.clientWidth, H=container.clientHeight||600;
+  svg.attr('width',W).attr('height',H);
+  svg.selectAll('*').remove();
+
+  const isDark=!document.getElementById('matis-root').classList.contains('light-mode');
+  const textColor=isDark?'#caa258':'#61223b';
+  const linkColor=isDark?'rgba(202,162,88,0.2)':'rgba(97,34,59,0.2)';
+
+  const g=svg.append('g');
+
+  // Zoom
+  svg.call(d3.zoom().scaleExtent([0.3,3]).on('zoom',e=>g.attr('transform',e.transform)));
+
+  // Arrow marker
+  svg.append('defs').append('marker')
+    .attr('id','arrow').attr('viewBox','0 -4 8 8').attr('refX',18).attr('refY',0)
+    .attr('markerWidth',6).attr('markerHeight',6).attr('orient','auto')
+    .append('path').attr('d','M0,-4L8,0L0,4').attr('fill',isDark?'rgba(202,162,88,0.4)':'rgba(97,34,59,0.3)');
+
+  const link=g.append('g').selectAll('line').data(GRAPH_LINKS).join('line')
+    .attr('stroke',linkColor).attr('stroke-width',1.2)
+    .attr('marker-end','url(#arrow)').attr('id',d=>`link-${d.source}-${d.target}`);
+
+  const node=g.append('g').selectAll('g').data(GRAPH_NODES).join('g')
+    .attr('class','graph-node').attr('cursor','pointer')
+    .call(d3.drag().on('start',dragStart).on('drag',dragged).on('end',dragEnd));
+
+  node.append('circle')
+    .attr('r',d=>d.year>=5?22:d.year===4?20:18)
+    .attr('fill',d=>d.color)
+    .attr('stroke',isDark?'rgba(202,162,88,0.4)':'rgba(202,162,88,0.6)')
+    .attr('stroke-width',1.5)
+    .style('filter',isDark?'drop-shadow(0 0 6px rgba(97,34,59,0.6))':'none');
+
+  node.append('text')
+    .attr('text-anchor','middle').attr('dy','0.35em')
+    .attr('font-family','Share Tech Mono, monospace').attr('font-size','7.5px')
+    .attr('fill',isDark?'#dfc07e':'#faf7f2').attr('pointer-events','none')
+    .text(d=>d.label);
+
+  // Tooltip
+  const tooltip=document.getElementById('graph-tooltip');
+  node.on('mouseover',(e,d)=>{
+    tooltip.style.display='block';
+    tooltip.style.left=(e.offsetX+15)+'px'; tooltip.style.top=(e.offsetY-10)+'px';
+    tooltip.innerHTML=`<strong style="color:#caa258">${d.label}</strong><br>${d.name}<br><br>${d.desc}<br><br><span style="color:rgba(202,162,88,0.5)">${d.credits} credits · ${d.sem}</span>`;
+  }).on('mousemove',(e)=>{
+    tooltip.style.left=(e.offsetX+15)+'px'; tooltip.style.top=(e.offsetY-10)+'px';
+  }).on('mouseout',()=>{tooltip.style.display='none';});
+
+  node.on('click',(e,d)=>{
+    document.getElementById('m-modal-content').innerHTML=`
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--su-gold-d);margin-bottom:4px;">MODULE DETAILS</div>
+        <h2 style="font-family:'Raleway',sans-serif;font-weight:800;color:var(--su-maroon);font-size:1.5rem;">${d.label} — ${d.name}</h2>
+      </div>
+      <p class="m-p">${d.desc}</p>
+      <div class="m-grid3" style="margin:16px 0;">
+        <div class="m-stat" style="padding:14px;"><span class="num" style="font-size:1.6rem;">${d.credits}</span><div class="lbl">Credits</div></div>
+        <div class="m-stat" style="padding:14px;"><span class="num" style="font-size:1.6rem;">Y${d.year}</span><div class="lbl">Year Level</div></div>
+        <div class="m-stat" style="padding:14px;"><span class="num" style="font-size:1.4rem;">${d.sem}</span><div class="lbl">Semester</div></div>
+      </div>
+      ${d.track?`<div style="margin-top:8px;">${d.track.map(t=>`<span class="m-tag gold">${t.toUpperCase()} TRACK</span>`).join('')}</div>`:''}
+      <div class="m-infobox" style="margin-top:14px;">Prerequisites: ${GRAPH_LINKS.filter(l=>l.target===d.id).map(l=>l.source).join(', ')||'None — first-year module'}</div>
+    `;
+    document.getElementById('m-modal').classList.add('open');
+    triggerGlitch();
+  });
+
+  if(_graphSim) _graphSim.stop();
+  _graphSim=d3.forceSimulation(GRAPH_NODES)
+    .force('link',d3.forceLink(GRAPH_LINKS).id(d=>d.id).distance(70).strength(0.6))
+    .force('charge',d3.forceManyBody().strength(-280))
+    .force('center',d3.forceCenter(W/2,H/2))
+    .force('y',d3.forceY(d=>(d.year-1)*(H/5)).strength(0.45))
+    .force('x',d3.forceX(W/2).strength(0.05))
+    .on('tick',()=>{
+      link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+          .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+      node.attr('transform',d=>`translate(${d.x},${d.y})`);
+    });
+
+  function dragStart(e,d){if(!e.active)_graphSim.alphaTarget(0.3).restart();d.fx=d.x;d.fy=d.y;}
+  function dragged(e,d){d.fx=e.x;d.fy=e.y;}
+  function dragEnd(e,d){if(!e.active)_graphSim.alphaTarget(0);d.fx=null;d.fy=null;}
+
+  // Apply initial highlight
+  graphHighlight(_graphHighlight,null,true);
+}
+window.initCurrGraph=initCurrGraph;
+
+window.graphHighlight=function(track,btnEl,silent){
+  _graphHighlight=track;
+  // Update buttons
+  document.querySelectorAll('.graph-filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btnEl) btnEl.classList.add('active');
+  else {
+    const btns=document.querySelectorAll('.graph-filter-btn');
+    btns.forEach(b=>{ if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(`'${track}'`)) b.classList.add('active'); });
+  }
+  if(!silent) triggerGlitch();
+  if(typeof d3==='undefined'||!document.getElementById('curr-graph-svg')) return;
+
+  const isDark=!document.getElementById('matis-root').classList.contains('light-mode');
+  const nodes=d3.selectAll('.graph-node circle');
+  const links=d3.selectAll('#curr-graph-svg line');
+
+  if(track==='all'){
+    nodes.attr('opacity',1).attr('stroke','rgba(202,162,88,0.5)').attr('stroke-width',1.5).style('filter',isDark?'drop-shadow(0 0 6px rgba(97,34,59,0.6))':'none');
+    links.attr('opacity',0.5).attr('stroke',isDark?'rgba(202,162,88,0.2)':'rgba(97,34,59,0.2)');
+    return;
+  }
+  const trackNodes=GRAPH_NODES.filter(n=>n.track&&n.track.includes(track)).map(n=>n.id);
+  // Also add prerequisites
+  const prereqs=new Set(trackNodes);
+  let changed=true;
+  while(changed){changed=false;GRAPH_LINKS.forEach(l=>{if(prereqs.has(l.target)&&!prereqs.has(l.source)){prereqs.add(l.source);changed=true;}});}
+  const trackColor=TRACK_COLORS[track]||'#caa258';
+
+  nodes.each(function(d){
+    const inTrack=prereqs.has(d.id);
+    d3.select(this).attr('opacity',inTrack?1:0.18)
+      .attr('stroke',inTrack?trackColor:'rgba(202,162,88,0.2)')
+      .attr('stroke-width',inTrack?3:1)
+      .style('filter',inTrack?`drop-shadow(0 0 10px ${trackColor})`:'none');
+  });
+  links.each(function(d){
+    const inTrack=prereqs.has(d.source.id||d.source)&&prereqs.has(d.target.id||d.target);
+    d3.select(this).attr('opacity',inTrack?0.9:0.06).attr('stroke',inTrack?trackColor:'rgba(202,162,88,0.1)').attr('stroke-width',inTrack?2:1);
+  });
+};
+
+/* ══════════════════════════════════════════════════
+   HACKATHON EASTER EGG
+   ══════════════════════════════════════════════════ */
+function triggerHackathon(){
+  // Strong glitch burst
+  for(let i=0;i<4;i++){
+    setTimeout(()=>{
+      glitch.classList.remove('active','strong-glitch'); void glitch.offsetWidth;
+      glitch.classList.add('active','strong-glitch');
+      setTimeout(()=>glitch.classList.remove('active','strong-glitch'),450);
+    },i*120);
+  }
+
+  const overlay=document.getElementById('hackathon-overlay');
+  overlay.classList.add('active');
+
+  const stats=[
+    {num:'72',lbl:'hours'},
+    {num:'R50k',lbl:'prize pool'},
+    {num:'∞',lbl:'caffeine'},
+  ];
+  const grid=document.getElementById('hack-stats-grid');
+  grid.innerHTML=stats.map((s,i)=>`
+    <div class="hack-stat" style="animation-delay:${0.3+i*0.15}s">
+      <span class="num">${s.num}</span><div class="lbl">${s.lbl}</div>
+    </div>`).join('');
+
+  // Confetti burst
+  if(typeof confetti==='function'){
+    const maroon='#61223b', gold='#caa258', green='#82CCAE';
+    confetti({particleCount:120,spread:90,origin:{y:0.5},colors:[maroon,gold,green,'#ffffff']});
+    setTimeout(()=>confetti({particleCount:60,spread:60,origin:{y:0.3},angle:45,colors:[gold,maroon]}),600);
+    setTimeout(()=>confetti({particleCount:60,spread:60,origin:{y:0.3},angle:135,colors:[green,gold]}),900);
+  }
+
+  document.addEventListener('keydown',closeHackathon,{once:true});
+}
+window.triggerHackathon=triggerHackathon;
+
+function closeHackathon(){
+  document.getElementById('hackathon-overlay').classList.remove('active');
+  document.removeEventListener('keydown',closeHackathon);
+}
+window.closeHackathon=closeHackathon;
+
+runBoot();
+
+})(); // close outer IIFE
+</script>
+</div>
+
+</body>
+</html>
